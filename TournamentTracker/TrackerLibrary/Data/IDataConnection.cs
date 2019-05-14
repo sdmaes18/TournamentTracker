@@ -12,7 +12,7 @@ namespace TrackerLibrary
     public interface IDataConnection
     {
         /// <summary>
-        /// Creates a prize.
+        /// Creates a prize for the tournament.
         /// </summary>
         /// <param name="model">Model to use for the prize.</param>
         /// <returns>A created prize.</returns>
