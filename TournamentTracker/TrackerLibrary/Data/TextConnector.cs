@@ -26,6 +26,11 @@ namespace TrackerLibrary
         private const string TeamFile = "TeamModels.csv";
 
         /// <summary>
+        /// File to load and write tournament data.
+        /// </summary>
+        private const string TournamentFile = "TournamentModels.csv";
+
+        /// <summary>
         /// Creates a person.
         /// </summary>
         /// <param name="model">Model of the person to create.</param>
@@ -121,6 +126,32 @@ namespace TrackerLibrary
         }
 
         /// <summary>
+        /// Creates a tournament.
+        /// </summary>
+        /// <param name="model">Model of the tournament.</param>
+        /// <returns>A new tournament.</returns>
+        public void CreateTournament(TournamentModel model)
+        {
+            List<TournamentModel> tournament = TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModel(TeamFile, PeopleFile, PrizesFile);
+
+            // If we have no data in prizes the starting id is 1.
+            int currentId = 1;
+
+            // adds a new id if we already have data in file.
+            if (tournament.Count > 0)
+            {
+                currentId = currentId = tournament.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
+            // New teams id.
+            model.Id = currentId;
+
+            tournament.Add(model);
+
+            tournament.SaveToTournamentFile(TournamentFile);
+        }
+
+        /// <summary>
         /// Gets a list of all people.
         /// </summary>
         /// <returns>Returns a list of people from database.</returns>
@@ -129,6 +160,10 @@ namespace TrackerLibrary
             return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
         }
 
+        /// <summary>
+        /// Gets all teams from the text file.
+        /// </summary>
+        /// <returns>A list of the teams.</returns>
         public List<TeamModel> GetTeam_All()
         {
             return TeamFile.FullFilePath().LoadFile().ConvertToTeamModel(PeopleFile);

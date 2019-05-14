@@ -7,6 +7,9 @@ using TrackerLibrary;
 
 namespace TournamentTracker
 {
+    /// <summary>
+    /// Used to create a team when we open a new form.
+    /// </summary>
     public interface ITeamRequest
     {
         /// <summary>

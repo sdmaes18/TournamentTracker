@@ -27,6 +27,9 @@ namespace TrackerUI
         /// </summary>
         private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
 
+        /// <summary>
+        /// The calling form.
+        /// </summary>
         private ITeamRequest callingForm;
 
         /// <summary>

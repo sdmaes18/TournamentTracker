@@ -14,17 +14,17 @@ namespace TrackerUI
         /// <summary>
         /// A list of all the teams in the database.
         /// </summary>
-        List<TeamModel> availableTeams = GlobalConfig.Connection.GetTeam_All();
+        public List<TeamModel> availableTeams = GlobalConfig.Connection.GetTeam_All();
 
         /// <summary>
         /// A list of selected teams to participate in the tournament.
         /// </summary>
-        List<TeamModel> selectedTeams = new List<TeamModel>();
+        public List<TeamModel> selectedTeams = new List<TeamModel>();
 
         /// <summary>
         /// A list of prizes for the tournament.
         /// </summary>
-        List<PrizeModel> selectedPrizes = new List<PrizeModel>();
+        public List<PrizeModel> selectedPrizes = new List<PrizeModel>();
 
         /// <summary>
         /// Initializes a new instance of the CreateTournamentForm class.
@@ -34,6 +34,117 @@ namespace TrackerUI
             this.InitializeComponent();
 
             this.WireUpLists();
+        }
+                
+        /// <summary>
+        /// Gets our prize.
+        /// </summary>
+        /// <param name="model">Prize Model we created.</param>
+        public void PrizeComplete(PrizeModel model)
+        {
+            this.selectedPrizes.Add(model);
+            this.WireUpLists();
+        }
+
+        /// <summary>
+        /// Gets our created team.
+        /// </summary>
+        /// <param name="model">Model of the team.</param>
+        public void TeamComplete(TeamModel model)
+        {
+            this.selectedTeams.Add(model);
+            this.WireUpLists();
+        }
+
+        /// <summary>
+        /// Creates the prize based on the teams in the tournament.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void CreatePrizeButton_Click(object sender, EventArgs e)
+        {
+            CreatePrizeForm frm = new CreatePrizeForm(this);
+            frm.Show();
+        }
+
+        /// <summary>
+        /// Creates a new team on link click.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void CreateNewTeamLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CreateTeamForm frm = new CreateTeamForm(this);
+            frm.Show();
+        }
+
+        /// <summary>
+        /// Removes a team from the tournament.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void RemoveSelectedTeamButton_Click(object sender, EventArgs e)
+        {
+            TeamModel team = this.TournamentTeamsListBox.SelectedItem as TeamModel;
+
+            if (team != null)
+            {
+                this.selectedTeams.Remove(team);
+                this.availableTeams.Add(team);
+
+                this.WireUpLists();
+            }
+        }
+
+        /// <summary>
+        /// Removes a prize from the tournament.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void RemoveSelectedPrizebtn_Click(object sender, EventArgs e)
+        {
+            PrizeModel prize = this.PrizesListBox.SelectedItem as PrizeModel;
+
+            if (prize != null)
+            {
+                this.selectedPrizes.Remove(prize);
+
+                this.WireUpLists();
+            }
+        }
+
+        /// <summary>
+        /// Actually creates the tournament.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void CreateTournamentBtn_Click(object sender, EventArgs e)
+        {
+            // Validate data.
+            decimal fee = 0;
+            bool feeAccepted = decimal.TryParse(this.EntryFreeValue.Text, out fee);
+
+            if (!feeAccepted)
+            {
+                MessageBox.Show("You need to enter a valid entry fee.", "Invalid Fee", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Create tournament model.
+            TournamentModel model = new TournamentModel();
+
+            model.TournamentName = this.TournamentNameValue.Text;
+            model.EntryFee = fee;
+
+            model.Prizes = this.selectedPrizes;
+            model.EnteredTeams = this.selectedTeams;
+
+            // Create matchups.
+
+            // Create tournament entries.
+            // Create all of the prize entries.
+            // Create all of the team entries.
+            GlobalConfig.Connection.CreateTournament(model);
         }
 
         /// <summary>
@@ -67,78 +178,6 @@ namespace TrackerUI
             {
                 this.selectedTeams.Add(team);
                 this.availableTeams.Remove(team);
-
-                this.WireUpLists();
-            }
-        }
-
-        /// <summary>
-        /// Creates the prize based on the teams in the tournament.
-        /// </summary>
-        /// <param name="sender">The object that initiated the event.</param>
-        /// <param name="e">The arguments of the event.</param>
-        private void CreatePrizeButton_Click(object sender, EventArgs e)
-        {
-            CreatePrizeForm frm = new CreatePrizeForm(this);
-            frm.Show();
-        }
-
-        /// <summary>
-        /// Gets our prize.
-        /// </summary>
-        /// <param name="model">Prize Model we created.</param>
-        public void PrizeComplete(PrizeModel model)
-        {
-            this.selectedPrizes.Add(model);
-            this.WireUpLists();
-        }
-
-        /// <summary>
-        /// Gets our created team.
-        /// </summary>
-        /// <param name="model">Model of the team.</param>
-        public void TeamComplete(TeamModel model)
-        {
-            this.selectedTeams.Add(model);
-            this.WireUpLists();
-        }
-
-        /// <summary>
-        /// Creates a new team on link click.
-        /// </summary>
-        /// <param name="sender">The object that initiated the event.</param>
-        /// <param name="e">The arguments of the event.</param>
-        private void CreateNewTeamLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            CreateTeamForm frm = new CreateTeamForm(this);
-            frm.Show();
-        }
-
-        /// <summary>
-        /// Removes a team from the tournament.
-        /// </summary>
-        /// <param name="sender">The object that initiated the event.</param>
-        /// <param name="e">The arguments of the event.</param>
-        private void RemoveSelectedTeamButton_Click(object sender, EventArgs e)
-        {
-            TeamModel team = this.TournamentTeamsListBox.SelectedItem as TeamModel;
-
-            if (team != null)
-            {
-                this.selectedTeams.Remove(team);
-                this.availableTeams.Add(team);
-
-                this.WireUpLists();
-            }
-        }
-
-        private void RemoveSelectedPrizebtn_Click(object sender, EventArgs e)
-        {
-            PrizeModel prize = this.PrizesListBox.SelectedItem as PrizeModel;
-
-            if (prize != null)
-            {
-                this.selectedPrizes.Remove(prize);
 
                 this.WireUpLists();
             }

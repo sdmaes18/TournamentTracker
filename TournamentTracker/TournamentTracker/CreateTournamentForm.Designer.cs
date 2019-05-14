@@ -32,7 +32,7 @@
             this.Headerlbl = new System.Windows.Forms.Label();
             this.TournamentNameValue = new System.Windows.Forms.TextBox();
             this.TournamentNamelbl = new System.Windows.Forms.Label();
-            this.EntryFreeBox = new System.Windows.Forms.TextBox();
+            this.EntryFreeValue = new System.Windows.Forms.TextBox();
             this.EntryFeelbl = new System.Windows.Forms.Label();
             this.SelectTeamDropDown = new System.Windows.Forms.ComboBox();
             this.SelectTeamlbl = new System.Windows.Forms.Label();
@@ -65,10 +65,10 @@
             this.TournamentNamelbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.TournamentNamelbl.Name = "TournamentNamelbl";
             // 
-            // EntryFreeBox
+            // EntryFreeValue
             // 
-            resources.ApplyResources(this.EntryFreeBox, "EntryFreeBox");
-            this.EntryFreeBox.Name = "EntryFreeBox";
+            resources.ApplyResources(this.EntryFreeValue, "EntryFreeValue");
+            this.EntryFreeValue.Name = "EntryFreeValue";
             // 
             // EntryFeelbl
             // 
@@ -154,6 +154,7 @@
             resources.ApplyResources(this.CreateTournamentBtn, "CreateTournamentBtn");
             this.CreateTournamentBtn.Name = "CreateTournamentBtn";
             this.CreateTournamentBtn.UseVisualStyleBackColor = true;
+            this.CreateTournamentBtn.Click += new System.EventHandler(this.CreateTournamentBtn_Click);
             // 
             // CreateTournamentForm
             // 
@@ -172,7 +173,7 @@
             this.Controls.Add(this.CreateNewTeamLink);
             this.Controls.Add(this.SelectTeamDropDown);
             this.Controls.Add(this.SelectTeamlbl);
-            this.Controls.Add(this.EntryFreeBox);
+            this.Controls.Add(this.EntryFreeValue);
             this.Controls.Add(this.EntryFeelbl);
             this.Controls.Add(this.TournamentNameValue);
             this.Controls.Add(this.TournamentNamelbl);
@@ -188,7 +189,7 @@
         private System.Windows.Forms.Label Headerlbl;
         private System.Windows.Forms.TextBox TournamentNameValue;
         private System.Windows.Forms.Label TournamentNamelbl;
-        private System.Windows.Forms.TextBox EntryFreeBox;
+        private System.Windows.Forms.TextBox EntryFreeValue;
         private System.Windows.Forms.Label EntryFeelbl;
         private System.Windows.Forms.ComboBox SelectTeamDropDown;
         private System.Windows.Forms.Label SelectTeamlbl;

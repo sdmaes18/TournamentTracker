@@ -41,7 +41,14 @@ namespace TrackerLibrary
         /// <summary>
         /// Gets a list of all the teams in the database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of all the teams.</returns>
         List<TeamModel> GetTeam_All();
+
+        /// <summary>
+        /// Creates a tournament.
+        /// </summary>
+        /// <param name="model">Model for the tournament.</param>
+        /// <returns>A new tournament model.</returns>
+        void CreateTournament(TournamentModel model);
     }
 }
