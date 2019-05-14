@@ -112,5 +112,29 @@ namespace TrackerLibrary
             // Return the list of people.
             return output;
         }
+
+        public List<TeamModel> GetTeam_All()
+        {
+            // A list to hold all the people.
+            List<TeamModel> output = null;
+
+            // Connect to the tournament database.
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
+            {
+                // Call stored procedure and get all the people in database and turn into a list.
+                output = connection.Query<TeamModel>("dbo.spTeam_GetAll").ToList();
+
+                foreach (TeamModel team in output)
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@TeamId", team.Id);
+
+                    team.TeamMembers = connection.Query<PersonModel>("spTeamMembers_GetByTeam", p, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+
+            // Return the list of people.
+            return output;
+        }
     }
 }

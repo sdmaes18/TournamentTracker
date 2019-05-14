@@ -37,5 +37,11 @@ namespace TrackerLibrary
         /// </summary>
         /// <returns>A list of people.</returns>
         List<PersonModel> GetPerson_All();
+
+        /// <summary>
+        /// Gets a list of all the teams in the database.
+        /// </summary>
+        /// <returns></returns>
+        List<TeamModel> GetTeam_All();
     }
 }

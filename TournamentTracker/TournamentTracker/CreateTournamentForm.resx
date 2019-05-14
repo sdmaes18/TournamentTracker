@@ -362,66 +362,66 @@
   <data name="&gt;&gt;AddTeamButton.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="CreatePrizeButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="CreatePrizeButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="CreatePrizeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 532</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="CreatePrizeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 44</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+  <data name="CreatePrizeButton.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="CreatePrizeButton.Text" xml:space="preserve">
     <value>Create Prize</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;CreatePrizeButton.Name" xml:space="preserve">
+    <value>CreatePrizeButton</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;CreatePrizeButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;CreatePrizeButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;CreatePrizeButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="TournamentPlayersListBox.ItemHeight" type="System.Int32, mscorlib">
+  <data name="TournamentTeamsListBox.ItemHeight" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
-  <data name="TournamentPlayersListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 176</value>
+  <data name="TournamentTeamsListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 155</value>
   </data>
-  <data name="TournamentPlayersListBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="TournamentTeamsListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>429, 194</value>
   </data>
-  <data name="TournamentPlayersListBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="TournamentTeamsListBox.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="&gt;&gt;TournamentPlayersListBox.Name" xml:space="preserve">
-    <value>TournamentPlayersListBox</value>
+  <data name="&gt;&gt;TournamentTeamsListBox.Name" xml:space="preserve">
+    <value>TournamentTeamsListBox</value>
   </data>
-  <data name="&gt;&gt;TournamentPlayersListBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;TournamentTeamsListBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TournamentPlayersListBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;TournamentTeamsListBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;TournamentPlayersListBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;TournamentTeamsListBox.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="TournamentPlayersLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="TournamentPlayersLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 120</value>
+    <value>428, 105</value>
   </data>
   <data name="TournamentPlayersLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 32</value>
@@ -444,64 +444,64 @@
   <data name="&gt;&gt;TournamentPlayersLbl.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="DeleteSelectedPlayerbtn.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="RemoveSelectedTeamButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
-  <data name="DeleteSelectedPlayerbtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="RemoveSelectedTeamButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="DeleteSelectedPlayerbtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>904, 176</value>
+  <data name="RemoveSelectedTeamButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>657, 105</value>
   </data>
-  <data name="DeleteSelectedPlayerbtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 82</value>
+  <data name="RemoveSelectedTeamButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 44</value>
   </data>
-  <data name="DeleteSelectedPlayerbtn.TabIndex" type="System.Int32, mscorlib">
+  <data name="RemoveSelectedTeamButton.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <data name="DeleteSelectedPlayerbtn.Text" xml:space="preserve">
-    <value>Delete Selected</value>
+  <data name="RemoveSelectedTeamButton.Text" xml:space="preserve">
+    <value>Remove Selected</value>
   </data>
-  <data name="&gt;&gt;DeleteSelectedPlayerbtn.Name" xml:space="preserve">
-    <value>DeleteSelectedPlayerbtn</value>
+  <data name="&gt;&gt;RemoveSelectedTeamButton.Name" xml:space="preserve">
+    <value>RemoveSelectedTeamButton</value>
   </data>
-  <data name="&gt;&gt;DeleteSelectedPlayerbtn.Type" xml:space="preserve">
+  <data name="&gt;&gt;RemoveSelectedTeamButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;DeleteSelectedPlayerbtn.Parent" xml:space="preserve">
+  <data name="&gt;&gt;RemoveSelectedTeamButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;DeleteSelectedPlayerbtn.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;RemoveSelectedTeamButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="DeleteSelectedPrizebtn.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="RemoveSelectedPrizebtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
-  <data name="DeleteSelectedPrizebtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="RemoveSelectedPrizebtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="DeleteSelectedPrizebtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>904, 466</value>
+  <data name="RemoveSelectedPrizebtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>657, 402</value>
   </data>
-  <data name="DeleteSelectedPrizebtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 77</value>
+  <data name="RemoveSelectedPrizebtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 46</value>
   </data>
-  <data name="DeleteSelectedPrizebtn.TabIndex" type="System.Int32, mscorlib">
+  <data name="RemoveSelectedPrizebtn.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="DeleteSelectedPrizebtn.Text" xml:space="preserve">
-    <value>Delete Selected</value>
+  <data name="RemoveSelectedPrizebtn.Text" xml:space="preserve">
+    <value>Remove Selected</value>
   </data>
-  <data name="&gt;&gt;DeleteSelectedPrizebtn.Name" xml:space="preserve">
-    <value>DeleteSelectedPrizebtn</value>
+  <data name="&gt;&gt;RemoveSelectedPrizebtn.Name" xml:space="preserve">
+    <value>RemoveSelectedPrizebtn</value>
   </data>
-  <data name="&gt;&gt;DeleteSelectedPrizebtn.Type" xml:space="preserve">
+  <data name="&gt;&gt;RemoveSelectedPrizebtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;DeleteSelectedPrizebtn.Parent" xml:space="preserve">
+  <data name="&gt;&gt;RemoveSelectedPrizebtn.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;DeleteSelectedPrizebtn.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;RemoveSelectedPrizebtn.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="DeleteTeamsPlayerLbl.AutoSize" type="System.Boolean, mscorlib">
@@ -511,16 +511,16 @@
     <value>NoControl</value>
   </data>
   <data name="DeleteTeamsPlayerLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 419</value>
+    <value>437, 402</value>
   </data>
   <data name="DeleteTeamsPlayerLbl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 32</value>
+    <value>94, 32</value>
   </data>
   <data name="DeleteTeamsPlayerLbl.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
   <data name="DeleteTeamsPlayerLbl.Text" xml:space="preserve">
-    <value>Teams/Players</value>
+    <value>Prizes</value>
   </data>
   <data name="&gt;&gt;DeleteTeamsPlayerLbl.Name" xml:space="preserve">
     <value>DeleteTeamsPlayerLbl</value>
@@ -538,7 +538,7 @@
     <value>32</value>
   </data>
   <data name="PrizesListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 466</value>
+    <value>434, 454</value>
   </data>
   <data name="PrizesListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>429, 194</value>
@@ -565,10 +565,10 @@
     <value>NoControl</value>
   </data>
   <data name="CreateTournamentBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 707</value>
+    <value>130, 595</value>
   </data>
   <data name="CreateTournamentBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 65</value>
+    <value>152, 80</value>
   </data>
   <data name="CreateTournamentBtn.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -595,7 +595,7 @@
     <value>16, 32</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1087, 803</value>
+    <value>1126, 687</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14pt</value>

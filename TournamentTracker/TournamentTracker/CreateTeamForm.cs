@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TournamentTracker;
 using TrackerLibrary;
 
 namespace TrackerUI
@@ -26,14 +27,16 @@ namespace TrackerUI
         /// </summary>
         private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
 
+        private ITeamRequest callingForm;
+
         /// <summary>
         /// Initializes a new instance of the CreateTeamForm class.
         /// </summary>
-        public CreateTeamForm()
+        public CreateTeamForm(ITeamRequest caller)
         {
             this.InitializeComponent();
 
-            //// this.CreateSampleData();
+            this.callingForm = caller;
 
             this.WireUpLists();
         }
@@ -187,9 +190,11 @@ namespace TrackerUI
             team.TeamName = this.TeamNameValue.Text;
             team.TeamMembers = this.selectedTeamMembers;
 
-            team = GlobalConfig.Connection.CreateTeam(team);
+            GlobalConfig.Connection.CreateTeam(team);
 
-            // TODO - if we arn't closing form after creation, reset the form.
+            this.callingForm.TeamComplete(team);
+
+            this.Close();
         }
     }
 }

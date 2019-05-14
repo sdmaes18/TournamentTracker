@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TournamentTracker;
 using TrackerLibrary;
 
 namespace TrackerUI
@@ -17,10 +18,17 @@ namespace TrackerUI
     public partial class CreatePrizeForm : Form
     {
         /// <summary>
+        /// Stores the information about the prize.
+        /// </summary>
+        public IPrizeRequest callingForm;
+
+        /// <summary>
         /// Initializes a new instance of the CreatePrizeForm class.
         /// </summary>
-        public CreatePrizeForm()
+        /// <param name="caller">Caller from the create team form.</param>
+        public CreatePrizeForm(IPrizeRequest caller)
         {
+            this.callingForm = caller;
             this.InitializeComponent();
         }
 
@@ -40,12 +48,11 @@ namespace TrackerUI
                     this.PrizeAmountValue.Text,
                     this.PrizePercentageValue.Text);
 
-                GlobalConfig.Connection.CreatePrize(model);             
-     
-                this.PlaceNameValue.Text = string.Empty;
-                this.PlaceNumberValue.Text = string.Empty;
-                this.PrizeAmountValue.Text = "0";
-                this.PrizePercentageValue.Text = "0";
+                GlobalConfig.Connection.CreatePrize(model);
+
+                this.callingForm.PrizeComplete(model);
+
+                this.Close();
             }
             else
             {
