@@ -129,7 +129,6 @@ namespace TrackerLibrary
         /// Creates a tournament.
         /// </summary>
         /// <param name="model">Model of the tournament.</param>
-        /// <returns>A new tournament.</returns>
         public void CreateTournament(TournamentModel model)
         {
             List<TournamentModel> tournament = TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModel(TeamFile, PeopleFile, PrizesFile);

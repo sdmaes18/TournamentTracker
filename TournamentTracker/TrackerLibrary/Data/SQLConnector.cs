@@ -97,7 +97,6 @@ namespace TrackerLibrary
         /// Creates a new tournament.
         /// </summary>
         /// <param name="model">Model of the tournament.</param>
-        /// <returns>A newly created tournament.</returns>
         public void CreateTournament(TournamentModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))

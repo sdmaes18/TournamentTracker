@@ -73,7 +73,9 @@ namespace TrackerLib.Data.TextHelpers
         /// </summary>
         /// <param name="lines">Lines to read.</param>
         /// <param name="fileName">File to use.</param>
-        /// <returns>A list of tournament models.</returns>
+        /// <param name="peopleFileName">File for the people.</param>
+        /// <param name="prizesFileName">File to get prizes.</param>
+        /// <returns>A list of tournaments.</returns>
         public static List<TournamentModel> ConvertToTournamentModel(this List<string> lines, string fileName, string peopleFileName, string prizesFileName)
         {
             List<TournamentModel> output = new List<TournamentModel>();
@@ -92,7 +94,7 @@ namespace TrackerLib.Data.TextHelpers
 
                 string[] teamIds = cols[3].Split('|');
 
-                foreach(string id in teamIds)
+                foreach (string id in teamIds)
                 {
                     tm.EnteredTeams.Add(teamModel.Where(x => x.Id == int.Parse(id)).First());
                 }
@@ -104,7 +106,7 @@ namespace TrackerLib.Data.TextHelpers
                     tm.Prizes.Add(prizes.Where(x => x.Id == int.Parse(id)).First());
                 }
 
-                // TODO - rounds information.
+                //// TODO - rounds information.
 
                 output.Add(tm);
             }
@@ -225,11 +227,16 @@ namespace TrackerLib.Data.TextHelpers
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
 
+        /// <summary>
+        /// Saves tournament to file.
+        /// </summary>
+        /// <param name="models">Model to save.</param>
+        /// <param name="fileName">File name to save to.</param>
         public static void SaveToTournamentFile(this List<TournamentModel> models, string fileName)
         {
             List<string> lines = new List<string>();
 
-            foreach (TournamentModel tm  in models)
+            foreach (TournamentModel tm in models)
             {
                 lines.Add($@"{ tm.Id },
                              { tm.TournamentName },
@@ -242,6 +249,11 @@ namespace TrackerLib.Data.TextHelpers
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
 
+        /// <summary>
+        /// Converts tournament rounds to a string.
+        /// </summary>
+        /// <param name="rounds">Rounds in the tournament.</param>
+        /// <returns>A list of rounds in string format.</returns>
         private static string ConvertRoundsListToString(List<List<MatchupModel>> rounds)
         {
             // String used to return all people ids.
@@ -265,6 +277,11 @@ namespace TrackerLib.Data.TextHelpers
             return output;
         }
 
+        /// <summary>
+        /// Converts the matchup's in a tournament into a string format.
+        /// </summary>
+        /// <param name="matchup">Matchup's in the tournament.</param>
+        /// <returns>A string of matchup's.</returns>
         private static string ConvertMatchupListToString(List<MatchupModel> matchup)
         {
             // String used to return all people ids.
@@ -288,6 +305,11 @@ namespace TrackerLib.Data.TextHelpers
             return output;
         }
 
+        /// <summary>
+        /// Converts tournament prizes into a string.
+        /// </summary>
+        /// <param name="prizes">Prizes in the tournament.</param>
+        /// <returns>A string of prizes.</returns>
         private static string ConvertPrizeListToString(List<PrizeModel> prizes)
         {
             // String used to return all people ids.
@@ -311,6 +333,11 @@ namespace TrackerLib.Data.TextHelpers
             return output;
         }
 
+        /// <summary>
+        /// Converts the teams in a tournament into a string.
+        /// </summary>
+        /// <param name="teams">List of teams.</param>
+        /// <returns>A string of teams.</returns>
         private static string ConvertTeamListToString(List<TeamModel> teams)
         {
             // String used to return all people ids.

@@ -35,6 +35,7 @@ namespace TrackerUI
         /// <summary>
         /// Initializes a new instance of the CreateTeamForm class.
         /// </summary>
+        /// <param name="caller">Caller of the form to use new form data.</param>
         public CreateTeamForm(ITeamRequest caller)
         {
             this.InitializeComponent();

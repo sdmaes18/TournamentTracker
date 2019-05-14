@@ -48,7 +48,6 @@ namespace TrackerLibrary
         /// Creates a tournament.
         /// </summary>
         /// <param name="model">Model for the tournament.</param>
-        /// <returns>A new tournament model.</returns>
         void CreateTournament(TournamentModel model);
     }
 }
