@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Headerlbl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Headerlbl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="Headerlbl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 53</value>
+  </data>
+  <data name="Headerlbl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 37</value>
+  </data>
+  <data name="Headerlbl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Headerlbl.Text" xml:space="preserve">
+    <value>Create Tournament</value>
+  </data>
+  <data name="&gt;&gt;Headerlbl.Name" xml:space="preserve">
+    <value>Headerlbl</value>
+  </data>
+  <data name="&gt;&gt;Headerlbl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Headerlbl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Headerlbl.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="TournamentNameValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 176</value>
+  </data>
+  <data name="TournamentNameValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>296, 39</value>
+  </data>
+  <data name="TournamentNameValue.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;TournamentNameValue.Name" xml:space="preserve">
+    <value>TournamentNameValue</value>
+  </data>
+  <data name="&gt;&gt;TournamentNameValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TournamentNameValue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TournamentNameValue.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="TournamentNamelbl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TournamentNamelbl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 14pt</value>
+  </data>
+  <data name="TournamentNamelbl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 120</value>
+  </data>
+  <data name="TournamentNamelbl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 38</value>
+  </data>
+  <data name="TournamentNamelbl.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="TournamentNamelbl.Text" xml:space="preserve">
+    <value>Tournament Name</value>
+  </data>
+  <data name="&gt;&gt;TournamentNamelbl.Name" xml:space="preserve">
+    <value>TournamentNamelbl</value>
+  </data>
+  <data name="&gt;&gt;TournamentNamelbl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TournamentNamelbl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TournamentNamelbl.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="EntryFreeBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 257</value>
+  </data>
+  <data name="EntryFreeBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 39</value>
+  </data>
+  <data name="EntryFreeBox.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="EntryFreeBox.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;EntryFreeBox.Name" xml:space="preserve">
+    <value>EntryFreeBox</value>
+  </data>
+  <data name="&gt;&gt;EntryFreeBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EntryFreeBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;EntryFreeBox.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="EntryFeelbl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="EntryFeelbl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 14pt</value>
+  </data>
+  <data name="EntryFeelbl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 255</value>
+  </data>
+  <data name="EntryFeelbl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 38</value>
+  </data>
+  <data name="EntryFeelbl.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="EntryFeelbl.Text" xml:space="preserve">
+    <value>Enry Fee</value>
+  </data>
+  <data name="&gt;&gt;EntryFeelbl.Name" xml:space="preserve">
+    <value>EntryFeelbl</value>
+  </data>
+  <data name="&gt;&gt;EntryFeelbl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EntryFeelbl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;EntryFeelbl.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="SelectTeamDropDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 394</value>
+  </data>
+  <data name="SelectTeamDropDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 40</value>
+  </data>
+  <data name="SelectTeamDropDown.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;SelectTeamDropDown.Name" xml:space="preserve">
+    <value>SelectTeamDropDown</value>
+  </data>
+  <data name="&gt;&gt;SelectTeamDropDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectTeamDropDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectTeamDropDown.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="SelectTeamlbl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SelectTeamlbl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 14pt</value>
+  </data>
+  <data name="SelectTeamlbl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 344</value>
+  </data>
+  <data name="SelectTeamlbl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 38</value>
+  </data>
+  <data name="SelectTeamlbl.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="SelectTeamlbl.Text" xml:space="preserve">
+    <value>Select Team</value>
+  </data>
+  <data name="&gt;&gt;SelectTeamlbl.Name" xml:space="preserve">
+    <value>SelectTeamlbl</value>
+  </data>
+  <data name="&gt;&gt;SelectTeamlbl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectTeamlbl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectTeamlbl.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="CreateNewTeamLink.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CreateNewTeamLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="CreateNewTeamLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 355</value>
+  </data>
+  <data name="CreateNewTeamLink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 25</value>
+  </data>
+  <data name="CreateNewTeamLink.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="CreateNewTeamLink.Text" xml:space="preserve">
+    <value>create team</value>
+  </data>
+  <data name="&gt;&gt;CreateNewTeamLink.Name" xml:space="preserve">
+    <value>CreateNewTeamLink</value>
+  </data>
+  <data name="&gt;&gt;CreateNewTeamLink.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CreateNewTeamLink.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CreateNewTeamLink.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="AddTeamButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="AddTeamButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 454</value>
+  </data>
+  <data name="AddTeamButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 44</value>
+  </data>
+  <data name="AddTeamButton.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="AddTeamButton.Text" xml:space="preserve">
+    <value>Add Team</value>
+  </data>
+  <data name="&gt;&gt;AddTeamButton.Name" xml:space="preserve">
+    <value>AddTeamButton</value>
+  </data>
+  <data name="&gt;&gt;AddTeamButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddTeamButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;AddTeamButton.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 532</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 44</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Create Prize</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="TournamentPlayersListBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="TournamentPlayersListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 176</value>
+  </data>
+  <data name="TournamentPlayersListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>429, 194</value>
+  </data>
+  <data name="TournamentPlayersListBox.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;TournamentPlayersListBox.Name" xml:space="preserve">
+    <value>TournamentPlayersListBox</value>
+  </data>
+  <data name="&gt;&gt;TournamentPlayersListBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TournamentPlayersListBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TournamentPlayersListBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="TournamentPlayersLbl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TournamentPlayersLbl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 120</value>
+  </data>
+  <data name="TournamentPlayersLbl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 32</value>
+  </data>
+  <data name="TournamentPlayersLbl.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="TournamentPlayersLbl.Text" xml:space="preserve">
+    <value>Teams/Players</value>
+  </data>
+  <data name="&gt;&gt;TournamentPlayersLbl.Name" xml:space="preserve">
+    <value>TournamentPlayersLbl</value>
+  </data>
+  <data name="&gt;&gt;TournamentPlayersLbl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TournamentPlayersLbl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TournamentPlayersLbl.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="DeleteSelectedPlayerbtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="DeleteSelectedPlayerbtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DeleteSelectedPlayerbtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>904, 176</value>
+  </data>
+  <data name="DeleteSelectedPlayerbtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 82</value>
+  </data>
+  <data name="DeleteSelectedPlayerbtn.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="DeleteSelectedPlayerbtn.Text" xml:space="preserve">
+    <value>Delete Selected</value>
+  </data>
+  <data name="&gt;&gt;DeleteSelectedPlayerbtn.Name" xml:space="preserve">
+    <value>DeleteSelectedPlayerbtn</value>
+  </data>
+  <data name="&gt;&gt;DeleteSelectedPlayerbtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteSelectedPlayerbtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DeleteSelectedPlayerbtn.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="DeleteSelectedPrizebtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="DeleteSelectedPrizebtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DeleteSelectedPrizebtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>904, 466</value>
+  </data>
+  <data name="DeleteSelectedPrizebtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 77</value>
+  </data>
+  <data name="DeleteSelectedPrizebtn.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="DeleteSelectedPrizebtn.Text" xml:space="preserve">
+    <value>Delete Selected</value>
+  </data>
+  <data name="&gt;&gt;DeleteSelectedPrizebtn.Name" xml:space="preserve">
+    <value>DeleteSelectedPrizebtn</value>
+  </data>
+  <data name="&gt;&gt;DeleteSelectedPrizebtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteSelectedPrizebtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DeleteSelectedPrizebtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="DeleteTeamsPlayerLbl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DeleteTeamsPlayerLbl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DeleteTeamsPlayerLbl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 419</value>
+  </data>
+  <data name="DeleteTeamsPlayerLbl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 32</value>
+  </data>
+  <data name="DeleteTeamsPlayerLbl.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="DeleteTeamsPlayerLbl.Text" xml:space="preserve">
+    <value>Teams/Players</value>
+  </data>
+  <data name="&gt;&gt;DeleteTeamsPlayerLbl.Name" xml:space="preserve">
+    <value>DeleteTeamsPlayerLbl</value>
+  </data>
+  <data name="&gt;&gt;DeleteTeamsPlayerLbl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteTeamsPlayerLbl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DeleteTeamsPlayerLbl.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="PrizesListBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="PrizesListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 466</value>
+  </data>
+  <data name="PrizesListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>429, 194</value>
+  </data>
+  <data name="PrizesListBox.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;PrizesListBox.Name" xml:space="preserve">
+    <value>PrizesListBox</value>
+  </data>
+  <data name="&gt;&gt;PrizesListBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PrizesListBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PrizesListBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="CreateTournamentBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="CreateTournamentBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CreateTournamentBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 707</value>
+  </data>
+  <data name="CreateTournamentBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 65</value>
+  </data>
+  <data name="CreateTournamentBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="CreateTournamentBtn.Text" xml:space="preserve">
+    <value>Create Tournament</value>
+  </data>
+  <data name="&gt;&gt;CreateTournamentBtn.Name" xml:space="preserve">
+    <value>CreateTournamentBtn</value>
+  </data>
+  <data name="&gt;&gt;CreateTournamentBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CreateTournamentBtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CreateTournamentBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>16, 32</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1087, 803</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14pt</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Create Tournament</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CreateTournamentForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
