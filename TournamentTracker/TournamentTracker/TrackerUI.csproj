@@ -46,41 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreatePrizeForm.cs">
+    <Compile Include="Forms\CreatePrizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreatePrizeForm.Designer.cs">
+    <Compile Include="Forms\CreatePrizeForm.Designer.cs">
       <DependentUpon>CreatePrizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateTeamForm.cs">
+    <Compile Include="Forms\CreateTeamForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateTeamForm.Designer.cs">
+    <Compile Include="Forms\CreateTeamForm.Designer.cs">
       <DependentUpon>CreateTeamForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateTournamentForm.cs">
+    <Compile Include="Forms\CreateTournamentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateTournamentForm.Designer.cs">
+    <Compile Include="Forms\CreateTournamentForm.Designer.cs">
       <DependentUpon>CreateTournamentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IPrizeRequest.cs" />
-    <Compile Include="ITeamRequest.cs" />
+    <Compile Include="Interfaces\IPrizeRequest.cs" />
+    <Compile Include="Interfaces\ITeamRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TournamentDashboardForm.cs">
+    <Compile Include="Forms\TournamentDashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TournamentDashboardForm.Designer.cs">
+    <Compile Include="Forms\TournamentDashboardForm.Designer.cs">
       <DependentUpon>TournamentDashboardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TournamentViewForm.cs">
+    <Compile Include="Forms\TournamentViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TournamentViewForm.Designer.cs">
+    <Compile Include="Forms\TournamentViewForm.Designer.cs">
       <DependentUpon>TournamentViewForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreateTournamentForm.resx">
+    <EmbeddedResource Include="Forms\CreateTournamentForm.resx">
       <DependentUpon>CreateTournamentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

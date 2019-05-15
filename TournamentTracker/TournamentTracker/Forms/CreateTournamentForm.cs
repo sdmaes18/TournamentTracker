@@ -37,7 +37,7 @@ namespace TrackerUI
         }
                 
         /// <summary>
-        /// Gets our prize.
+        /// Gets our prize and adds it to the selected prizes for the tournament.
         /// </summary>
         /// <param name="model">Prize Model we created.</param>
         public void PrizeComplete(PrizeModel model)
@@ -139,7 +139,8 @@ namespace TrackerUI
             model.Prizes = this.SelectedPrizes;
             model.EnteredTeams = this.SelectedTeams;
 
-            // Create matchups.
+            // Wire up matchups.
+            TournamentLogic.CreateRounds(model);
 
             // Create tournament entries.
             // Create all of the prize entries.
