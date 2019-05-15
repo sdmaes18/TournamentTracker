@@ -20,7 +20,7 @@ namespace TrackerUI
         /// <summary>
         /// Stores the information about the prize.
         /// </summary>
-        public IPrizeRequest callingForm;
+        public IPrizeRequest CallingForm;
 
         /// <summary>
         /// Initializes a new instance of the CreatePrizeForm class.
@@ -28,7 +28,7 @@ namespace TrackerUI
         /// <param name="caller">Caller from the create team form.</param>
         public CreatePrizeForm(IPrizeRequest caller)
         {
-            this.callingForm = caller;
+            this.CallingForm = caller;
             this.InitializeComponent();
         }
 
@@ -50,7 +50,7 @@ namespace TrackerUI
 
                 GlobalConfig.Connection.CreatePrize(model);
 
-                this.callingForm.PrizeComplete(model);
+                this.CallingForm.PrizeComplete(model);
 
                 this.Close();
             }

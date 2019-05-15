@@ -14,17 +14,17 @@ namespace TrackerUI
         /// <summary>
         /// A list of all the teams in the database.
         /// </summary>
-        public List<TeamModel> availableTeams = GlobalConfig.Connection.GetTeam_All();
+        public List<TeamModel> AvailableTeams = GlobalConfig.Connection.GetTeam_All();
 
         /// <summary>
         /// A list of selected teams to participate in the tournament.
         /// </summary>
-        public List<TeamModel> selectedTeams = new List<TeamModel>();
+        public List<TeamModel> SelectedTeams = new List<TeamModel>();
 
         /// <summary>
         /// A list of prizes for the tournament.
         /// </summary>
-        public List<PrizeModel> selectedPrizes = new List<PrizeModel>();
+        public List<PrizeModel> SelectedPrizes = new List<PrizeModel>();
 
         /// <summary>
         /// Initializes a new instance of the CreateTournamentForm class.
@@ -42,7 +42,7 @@ namespace TrackerUI
         /// <param name="model">Prize Model we created.</param>
         public void PrizeComplete(PrizeModel model)
         {
-            this.selectedPrizes.Add(model);
+            this.SelectedPrizes.Add(model);
             this.WireUpLists();
         }
 
@@ -52,7 +52,7 @@ namespace TrackerUI
         /// <param name="model">Model of the team.</param>
         public void TeamComplete(TeamModel model)
         {
-            this.selectedTeams.Add(model);
+            this.SelectedTeams.Add(model);
             this.WireUpLists();
         }
 
@@ -89,8 +89,8 @@ namespace TrackerUI
 
             if (team != null)
             {
-                this.selectedTeams.Remove(team);
-                this.availableTeams.Add(team);
+                this.SelectedTeams.Remove(team);
+                this.AvailableTeams.Add(team);
 
                 this.WireUpLists();
             }
@@ -107,7 +107,7 @@ namespace TrackerUI
 
             if (prize != null)
             {
-                this.selectedPrizes.Remove(prize);
+                this.SelectedPrizes.Remove(prize);
 
                 this.WireUpLists();
             }
@@ -136,8 +136,8 @@ namespace TrackerUI
             model.TournamentName = this.TournamentNameValue.Text;
             model.EntryFee = fee;
 
-            model.Prizes = this.selectedPrizes;
-            model.EnteredTeams = this.selectedTeams;
+            model.Prizes = this.SelectedPrizes;
+            model.EnteredTeams = this.SelectedTeams;
 
             // Create matchups.
 
@@ -153,15 +153,15 @@ namespace TrackerUI
         private void WireUpLists()
         {
             this.SelectTeamDropDown.DataSource = null;
-            this.SelectTeamDropDown.DataSource = this.availableTeams;
+            this.SelectTeamDropDown.DataSource = this.AvailableTeams;
             this.SelectTeamDropDown.DisplayMember = "TeamName";
 
             this.TournamentTeamsListBox.DataSource = null;
-            this.TournamentTeamsListBox.DataSource = this.selectedTeams;
+            this.TournamentTeamsListBox.DataSource = this.SelectedTeams;
             this.TournamentTeamsListBox.DisplayMember = "TeamName";
 
             this.PrizesListBox.DataSource = null;
-            this.PrizesListBox.DataSource = this.selectedPrizes;
+            this.PrizesListBox.DataSource = this.SelectedPrizes;
             this.PrizesListBox.DisplayMember = "PlaceName";
         }
 
@@ -176,8 +176,8 @@ namespace TrackerUI
 
             if (team != null)
             {
-                this.selectedTeams.Add(team);
-                this.availableTeams.Remove(team);
+                this.SelectedTeams.Add(team);
+                this.AvailableTeams.Remove(team);
 
                 this.WireUpLists();
             }
