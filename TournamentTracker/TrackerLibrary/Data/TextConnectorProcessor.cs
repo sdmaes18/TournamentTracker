@@ -159,7 +159,17 @@ namespace TrackerLib.Data.TextHelpers
                 entry.Id = int.Parse(cols[0]);
                 entry.TeamCompeting = LookUpTeamById(int.Parse(cols[1]));
                 entry.Score = double.Parse(cols[2]);
-                entry.ParentMatchup = LookUpMatchUpById(int.Parse(cols[3]));
+
+                int parentId = 0;
+                if (int.TryParse(cols[3], out parentId))
+                {
+                    entry.ParentMatchup = LookUpMatchUpById(parentId);
+                }
+                else
+                {
+                    entry.ParentMatchup = null;
+                }
+               
                 output.Add(entry);
             }
 
