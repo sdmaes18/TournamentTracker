@@ -324,6 +324,21 @@ namespace TrackerLib.Data.TextHelpers
             }
 
             model.Id = currentId;
+            entries.Add(model);
+
+            List<string> lines = new List<string>();
+
+            foreach (MatchupEntryModel entry in entries)
+            {
+                string parent = string.Empty;
+                if (entry.ParentMatchup != null)
+                {
+                    parent = entry.ParentMatchup.Id.ToString();
+                }
+                lines.Add($"{ entry.Id },{ entry.TeamCompeting.Id },{ entry.Score },{ parent }");
+            }
+
+            File.WriteAllLines(GlobalConfig.MatchUpEntryFile.FullFilePath(), lines);
         }
 
         /// <summary>
@@ -349,6 +364,25 @@ namespace TrackerLib.Data.TextHelpers
             {
                 entry.SaveEntryToFile(matchupEntryFileName);
             }
+
+            List<string> lines = new List<string>();
+
+            foreach (MatchupModel m in matchups)
+            {
+                string winnerId = string.Empty;
+                if (m.Winner != null)
+                {
+                    winnerId = m.Winner.Id.ToString();
+                }
+                else
+                {
+                    winnerId = null;
+                }
+
+                lines.Add($"{ m.Id },{ ConvertMatchUpEntryListToString(m.Entries) },{ winnerId },{ m.MatchupRound }");
+            }
+
+            File.WriteAllLines(GlobalConfig.MatchUpFile.FullFilePath(), lines);
         }
 
         /// <summary>
@@ -499,6 +533,34 @@ namespace TrackerLib.Data.TextHelpers
             foreach (PrizeModel p in prizes)
             {
                 output += $"{ p.Id }|";
+            }
+
+            // Removes final pipe |.
+            output = output.Substring(0, output.Length - 1);
+
+            // return string of id.
+            return output;
+        }
+
+        /// <summary>
+        /// Converts the matchup entries into a list of string that is pipe seperated.
+        /// </summary>
+        /// <param name="entries">List of entries.</param>
+        /// <returns>String of entries.</returns>
+        private static string ConvertMatchUpEntryListToString(List<MatchupEntryModel> entries)
+        {
+            // String used to return all people ids.
+            string output = default(string);
+
+            if (entries.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            // Add person id to string with pipe seperator.
+            foreach (MatchupEntryModel e in entries)
+            {
+                output += $"{ e.Id }|";
             }
 
             // Removes final pipe |.
