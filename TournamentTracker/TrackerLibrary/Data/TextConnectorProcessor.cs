@@ -241,7 +241,10 @@ namespace TrackerLib.Data.TextHelpers
         /// <returns></returns>
         private static TeamModel LookUpTeamById(int id)
         {
-            throw new NotImplementedException();
+            List<TeamModel> teams = GlobalConfig.TeamFile.FullFilePath().LoadFile().ConvertToTeamModel(GlobalConfig.PeopleFile);
+
+            return teams.Where(x => x.Id == id).First();
+
         }
 
         /// <summary>

@@ -10,6 +10,36 @@ namespace TrackerLibrary
     public static class GlobalConfig
     {
         /// <summary>
+        /// File to load and write prize data.
+        /// </summary>
+        public const string PrizesFile = "PrizeModels.csv";
+
+        /// <summary>
+        /// File to load and write people data.
+        /// </summary>
+        public const string PeopleFile = "PersonModels.csv";
+
+        /// <summary>
+        /// File to load and write team data.
+        /// </summary>
+        public const string TeamFile = "TeamModels.csv";
+
+        /// <summary>
+        /// File to load and write tournament data.
+        /// </summary>
+        public const string TournamentFile = "TournamentModels.csv";
+
+        /// <summary>
+        /// File to load and write match up data.
+        /// </summary>
+        public const string MatchUpFile = "MatchupFileModels.csv";
+
+        /// <summary>
+        /// File to load and write match up entries data.
+        /// </summary>
+        public const string MatchUpEntryFile = "MatchUpEntriesModels.csv";
+
+        /// <summary>
         /// Gets a connections to save (get) data.
         /// </summary>
         public static IDataConnection Connection { get; private set; }
