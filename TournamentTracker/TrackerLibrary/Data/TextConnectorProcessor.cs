@@ -143,6 +143,29 @@ namespace TrackerLib.Data.TextHelpers
             return output;
         }
 
+        public static List<MatchupEntryModel> ConvertToMatchupEntryModel(this List<string> lines)
+        {
+            List<MatchupEntryModel> output = new List<MatchupEntryModel>();
+
+            foreach (string l in lines)
+            {
+                // Split on comma to seperate data.
+                string[] cols = l.Split(',');
+
+                // Creates a new person model.
+                MatchupEntryModel entry = new MatchupEntryModel();
+
+                // Assigns the person model data to selected columns.
+                entry.Id = int.Parse(cols[0]);
+                entry.TeamCompeting = LookUpTeamById(int.Parse(cols[1]));
+                entry.Score = double.Parse(cols[2]);
+                entry.ParentMatchup = LookUpMatchUpById(int.Parse(cols[3]));
+                output.Add(entry);
+            }
+
+            return output;
+        }
+
         /// <summary>
         /// Converts to a team model.
         /// </summary>
@@ -231,7 +254,29 @@ namespace TrackerLib.Data.TextHelpers
         /// <returns>A list version of the given string.</returns>
         private static List<MatchupEntryModel> ConvertStringToMatchupEntriesModel(string input)
         {
-            throw new NotImplementedException();
+            string[] ids = input.Split('|');
+
+            List<MatchupEntryModel> output = new List<MatchupEntryModel>();
+            List<MatchupEntryModel> entries = GlobalConfig.MatchUpEntryFile.FullFilePath().LoadFile().ConvertToMatchupEntryModel();
+
+            foreach (string id in ids)
+            {
+                output.Add(entries.Where(x => x.Id == int.Parse(id)).First());
+            }
+
+            return output;
+        }
+
+        /// <summary>
+        /// Looks up matchup by id.
+        /// </summary>
+        /// <param name="id">Id to look for.</param>
+        /// <returns>Matchup with the id.</returns>
+        public static MatchupModel LookUpMatchUpById(int id)
+        {
+            List<MatchupModel> matchups = GlobalConfig.MatchUpFile.FullFilePath().LoadFile().ConvertToMatchupModel();
+
+            return matchups.Where(x => x.Id == id).First();
         }
 
         /// <summary>
