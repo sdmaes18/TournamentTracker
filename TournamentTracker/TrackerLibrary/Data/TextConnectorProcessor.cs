@@ -215,7 +215,7 @@ namespace TrackerLib.Data.TextHelpers
                 // Assigns the person model data to selected columns.
                 match.Id = int.Parse(cols[0]);
                 match.Entries = ConvertStringToMatchupEntriesModel(cols[1]);
-                match.Winner = cols[2];
+                match.Winner = LookUpTeamById(int.Parse(cols[2]));
                 match.MatchupRound = int.Parse(cols[3]);
 
                 output.Add(match);
@@ -241,7 +241,7 @@ namespace TrackerLib.Data.TextHelpers
         /// <returns></returns>
         private static TeamModel LookUpTeamById(int id)
         {
-
+            throw new NotImplementedException();
         }
 
         /// <summary>
