@@ -177,6 +177,100 @@ namespace TrackerLib.Data.TextHelpers
         }
 
         /// <summary>
+        /// Saves the rounds of the tournament to a file.
+        /// </summary>
+        /// <param name="model">Model or tournament to use.</param>
+        /// <param name="MatchUpFile">File for the matchups.</param>
+        /// <param name="MatchUpEntryFile">File for the matchup entries.</param>
+        public static void SaveRoundsToFile(this TournamentModel model, string MatchUpFile, string MatchUpEntryFile)
+        {
+            foreach(List<MatchupModel> round in model.Rounds)
+            {
+                foreach(MatchupModel matchup in round)
+                {
+                    matchup.SaveMatchupToFile(MatchUpFile, MatchUpEntryFile);
+
+                   
+                }
+            }
+        }
+
+        /// <summary>
+        /// Takes in a list of strings that turn into a list of matchup models.
+        /// </summary>
+        /// <param name="lines">Lines to read.</param>
+        /// <returns>A list of person model.</returns>
+        public static List<MatchupModel> ConvertToMatchupModel(this List<string> lines)
+        {
+            List<MatchupModel> output = new List<MatchupModel>();
+
+            foreach (string l in lines)
+            {
+                // Split on comma to seperate data.
+                string[] cols = l.Split(',');
+
+                // Creates a new person model.
+                MatchupModel match = new MatchupModel();
+
+                // Assigns the person model data to selected columns.
+                match.Id = int.Parse(cols[0]);
+                match.Entries = ConvertStringToMatchupEntriesModel(cols[1]);
+                match.Winner = cols[2];
+                match.MatchupRound = int.Parse(cols[3]);
+
+                output.Add(match);
+            }
+
+            return output;
+        }
+
+        /// <summary>
+        /// Converts models to a list of matchups.
+        /// </summary>
+        /// <param name="input">String of matchups.</param>
+        /// <returns>A list version of the given string.</returns>
+        private static List<MatchupEntryModel> ConvertStringToMatchupEntriesModel(string input)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Looks up team by the id.
+        /// </summary>
+        /// <param name="id">id of the team.</param>
+        /// <returns></returns>
+        private static TeamModel LookUpTeamById(int id)
+        {
+
+        }
+
+        /// <summary>
+        /// Saves matchup entries to a file.
+        /// </summary>
+        /// <param name="model">Tournament to save.</param>
+        /// <param name="matchupEntryFileName">File Name.</param>
+        public static void SaveEntryToFile(this MatchupEntryModel model, string matchupEntryFileName)
+        {
+
+        }
+
+        /// <summary>
+        /// Saves matchup to a file.
+        /// </summary>
+        /// <param name="model">Tournament to save.</param>
+        /// <param name="matchupFile">File to save matchups.</param>
+        /// <param name="matchupEntryFileName">File to save matchup entries.</param>
+        public static void SaveMatchupToFile(this MatchupModel model, string matchupFile, string matchupEntryFileName)
+        {
+
+
+            foreach (MatchupEntryModel entry in model.Entries)
+            {
+                entry.SaveEntryToFile(matchupEntryFileName);
+            }
+        }
+
+        /// <summary>
         /// Saves information to a person file.
         /// </summary>
         /// <param name="models">Model to save.</param>

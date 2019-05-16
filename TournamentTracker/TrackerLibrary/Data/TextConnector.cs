@@ -31,6 +31,16 @@ namespace TrackerLibrary
         private const string TournamentFile = "TournamentModels.csv";
 
         /// <summary>
+        /// File to load and write match up data.
+        /// </summary>
+        private const string MatchUpFile = "MatchupFileModels.csv";
+
+        /// <summary>
+        /// File to load and write match up entries data.
+        /// </summary>
+        private const string MatchUpEntryFile = "MatchUpEntriesModels.csv";
+
+        /// <summary>
         /// Creates a person.
         /// </summary>
         /// <param name="model">Model of the person to create.</param>
@@ -131,7 +141,9 @@ namespace TrackerLibrary
         /// <param name="model">Model of the tournament.</param>
         public void CreateTournament(TournamentModel model)
         {
-            List<TournamentModel> tournament = TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModel(TeamFile, PeopleFile, PrizesFile);
+            List<TournamentModel> tournament = TournamentFile.FullFilePath()
+                                                .LoadFile()
+                                                .ConvertToTournamentModel(TeamFile, PeopleFile, PrizesFile);
 
             // If we have no data in prizes the starting id is 1.
             int currentId = 1;
@@ -144,6 +156,8 @@ namespace TrackerLibrary
 
             // New teams id.
             model.Id = currentId;
+
+            model.SaveRoundsToFile(MatchUpFile, MatchUpEntryFile);
 
             tournament.Add(model);
 
