@@ -106,8 +106,12 @@ namespace TrackerLibrary
                 this.SaveTournamentPrizes(connection, model);
 
                 this.SaveTournamentEntries(connection, model);
+
+                this.SaveTournamentRounds(connection, model);
             }
         }
+
+
 
         /// <summary>
         /// Gets a list of all the people from the database.
@@ -208,6 +212,16 @@ namespace TrackerLibrary
 
                 connection.Execute("dbo.spTournamentEntries_Insert", p, commandType: CommandType.StoredProcedure);
             }
+        }
+
+        /// <summary>
+        /// Saves the rounds of the tournament.
+        /// </summary>
+        /// <param name="connection">Connection to database.</param>
+        /// <param name="model">Model of the tournament.</param>
+        private void SaveTournamentRounds(IDbConnection connection, TournamentModel model)
+        {
+           
         }
     }
 }

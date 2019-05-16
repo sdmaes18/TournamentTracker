@@ -6,6 +6,11 @@
     public class MatchupEntryModel
     {
         /// <summary>
+        /// Gets or sets the id of the matchup.
+        /// </summary>
+         public int Id { get; set; }
+
+        /// <summary>
         /// Gets or sets the team competing.
         /// </summary>
         public TeamModel TeamCompeting { get; set; }
