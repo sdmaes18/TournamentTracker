@@ -143,6 +143,11 @@ namespace TrackerLib.Data.TextHelpers
             return output;
         }
 
+        /// <summary>
+        /// Takes in a list of strings that turn into a lsit of matchup entry model.
+        /// </summary>
+        /// <param name="lines">String of model.</param>
+        /// <returns>A list of matchup entry model.</returns>
         public static List<MatchupEntryModel> ConvertToMatchupEntryModel(this List<string> lines)
         {
             List<MatchupEntryModel> output = new List<MatchupEntryModel>();
@@ -309,7 +314,16 @@ namespace TrackerLib.Data.TextHelpers
         /// <param name="matchupEntryFileName">File Name.</param>
         public static void SaveEntryToFile(this MatchupEntryModel model, string matchupEntryFileName)
         {
+            List<MatchupEntryModel> entries = GlobalConfig.MatchUpFile.FullFilePath().LoadFile().ConvertToMatchupEntryModel();
 
+            int currentId = 1;
+
+            if (entries.Count > 0)
+            {
+                currentId = entries.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
+            model.Id = currentId;
         }
 
         /// <summary>
@@ -320,7 +334,16 @@ namespace TrackerLib.Data.TextHelpers
         /// <param name="matchupEntryFileName">File to save matchup entries.</param>
         public static void SaveMatchupToFile(this MatchupModel model, string matchupFile, string matchupEntryFileName)
         {
+            List<MatchupModel> matchups = GlobalConfig.MatchUpFile.FullFilePath().LoadFile().ConvertToMatchupModel();
 
+            int currentId = 1;
+
+            if (matchups.Count > 0)
+            {
+                currentId = matchups.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
+            model.Id = currentId;
 
             foreach (MatchupEntryModel entry in model.Entries)
             {
