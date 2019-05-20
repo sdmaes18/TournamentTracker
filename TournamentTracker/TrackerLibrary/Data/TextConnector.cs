@@ -141,9 +141,7 @@ namespace TrackerLibrary
         /// <param name="model">Model of the tournament.</param>
         public void CreateTournament(TournamentModel model)
         {
-            List<TournamentModel> tournament = TournamentFile.FullFilePath()
-                                                .LoadFile()
-                                                .ConvertToTournamentModel(TeamFile, PeopleFile, PrizesFile);
+            List<TournamentModel> tournament = TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModel(TeamFile, PeopleFile, PrizesFile);
 
             // If we have no data in prizes the starting id is 1.
             int currentId = 1;

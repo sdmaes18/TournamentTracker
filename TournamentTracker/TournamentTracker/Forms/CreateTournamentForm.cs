@@ -143,8 +143,6 @@ namespace TrackerUI
             TournamentLogic.CreateRounds(model);
 
             // Create tournament entries.
-            // Create all of the prize entries.
-            // Create all of the team entries.
             GlobalConfig.Connection.CreateTournament(model);
         }
 
