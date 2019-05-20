@@ -264,5 +264,56 @@ namespace TrackerLibrary
                 }
             }
         }
+
+        /// <summary>
+        /// Gets a list of all the tournaments and the tournament info.
+        /// </summary>
+        /// <returns>A list of tournaments.</returns>
+        public List<TournamentModel> GetTournament_All()
+        {
+            // A list to hold all the people.
+            List<TournamentModel> output = null;
+
+            // Connect to the tournament database.
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
+            {
+                // Call stored procedure and get all the people in database and turn into a list.
+                output = connection.Query<TournamentModel>("dbo.spTournaments_GetAll").ToList();
+
+                foreach (TournamentModel t in output)
+                {
+                    // Populate Prizes
+                    t.Prizes = connection.Query<PrizeModel>("dbo.spPrizes_GetByTournament").ToList();
+
+                    // Populate Teams.
+                    t.EnteredTeams = connection.Query<TeamModel>("dbo.spTeam_GetByTournament").ToList();
+
+                    foreach(TeamModel team in t.EnteredTeams)
+                    {
+                        var r = new DynamicParameters();
+                        r.Add("@TeamId", team.Id);
+
+                        team.TeamMembers = connection.Query<PersonModel>("spTeamMembers_GetByTeam", r, commandType: CommandType.StoredProcedure).ToList();
+                    }
+
+                    // Populate Rounds.
+                    var p = new DynamicParameters();
+                    p.Add("@TournamentId", t.Id);
+
+                    List<MatchupModel> matchups = connection.Query<MatchupModel>("dbo.spMatchups_GetByTournament").ToList();
+
+                    foreach(MatchupModel m in matchups)
+                    {
+                        p = new DynamicParameters();
+                        p.Add("@MatchupId", m.Id);
+
+                        m.Entries = connection.Query<MatchupEntryModel>("dbo.spMatchupEntries_GetByMatchup").ToList();
+                    }
+                }
+            }
+
+            // Return the list of people.
+            return output;
+        }
     }
 }

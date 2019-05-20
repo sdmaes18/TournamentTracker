@@ -49,5 +49,11 @@ namespace TrackerLibrary
         /// </summary>
         /// <param name="model">Model for the tournament.</param>
         void CreateTournament(TournamentModel model);
+
+        /// <summary>
+        /// Gets all the tournaments in database.
+        /// </summary>
+        /// <returns>A list of tournaments we have.</returns>
+        List<TournamentModel> GetTournament_All();
     }
 }
