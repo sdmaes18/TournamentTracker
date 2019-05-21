@@ -179,5 +179,15 @@ namespace TrackerLibrary
         {
             return TeamFile.FullFilePath().LoadFile().ConvertToTeamModel(PeopleFile);
         }
+
+        /// <summary>
+        /// Gets all the tournaments from the textfile.
+        /// </summary>
+        /// <returns>A list of tournaments.</returns>
+        public List<TournamentModel> GetTournament_All()
+        {
+           return TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModel(TeamFile, PeopleFile, PrizesFile);
+
+        }
     }
 }

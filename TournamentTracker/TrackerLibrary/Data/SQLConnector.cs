@@ -279,40 +279,82 @@ namespace TrackerLibrary
             {
                 // Call stored procedure and get all the people in database and turn into a list.
                 output = connection.Query<TournamentModel>("dbo.spTournaments_GetAll").ToList();
+                var p = new DynamicParameters();
 
                 foreach (TournamentModel t in output)
                 {
+                    p = new DynamicParameters();
+                    p.Add("@TournamentId", t.Id);
+
                     // Populate Prizes
-                    t.Prizes = connection.Query<PrizeModel>("dbo.spPrizes_GetByTournament").ToList();
+                    t.Prizes = connection.Query<PrizeModel>("dbo.spPrizes_GetByTournament", p, commandType: CommandType.StoredProcedure).ToList();
+
+                    p = new DynamicParameters();
+                    p.Add("@TournamentId", t.Id);
 
                     // Populate Teams.
-                    t.EnteredTeams = connection.Query<TeamModel>("dbo.spTeam_GetByTournament").ToList();
+                    t.EnteredTeams = connection.Query<TeamModel>("dbo.spTeam_GetByTournament", p, commandType: CommandType.StoredProcedure).ToList();
 
                     foreach(TeamModel team in t.EnteredTeams)
                     {
-                        var r = new DynamicParameters();
-                        r.Add("@TeamId", team.Id);
+                        p = new DynamicParameters();
+                        p.Add("@TeamId", team.Id);
 
-                        team.TeamMembers = connection.Query<PersonModel>("spTeamMembers_GetByTeam", r, commandType: CommandType.StoredProcedure).ToList();
+                        team.TeamMembers = connection.Query<PersonModel>("spTeamMembers_GetByTeam", p, commandType: CommandType.StoredProcedure).ToList();
                     }
 
                     // Populate Rounds.
-                    var p = new DynamicParameters();
+                    p = new DynamicParameters();
                     p.Add("@TournamentId", t.Id);
 
-                    List<MatchupModel> matchups = connection.Query<MatchupModel>("dbo.spMatchups_GetByTournament").ToList();
+                    List<MatchupModel> matchups = connection.Query<MatchupModel>("dbo.spMatchups_GetByTournament", p, commandType: CommandType.StoredProcedure).ToList();
 
                     foreach(MatchupModel m in matchups)
                     {
                         p = new DynamicParameters();
                         p.Add("@MatchupId", m.Id);
 
-                        m.Entries = connection.Query<MatchupEntryModel>("dbo.spMatchupEntries_GetByMatchup").ToList();
+                        m.Entries = connection.Query<MatchupEntryModel>("dbo.spMatchupEntries_GetByMatchup", p, commandType: CommandType.StoredProcedure).ToList();
+                        List<TeamModel> allTeams = this.GetTeam_All();
+
+                        if (m.WinnerId > 0)
+                        {
+                            m.Winner = allTeams.Where(x => x.Id == m.WinnerId).First();
+                        }
+
+                        foreach (var me in m.Entries )
+                        {
+                            if (me.TeamCompetingId > 0)
+                            {
+                                me.TeamCompeting = allTeams.Where(x => x.Id == me.TeamCompetingId).First();
+                            }
+
+                            if (me.ParentMatchupId > 0)
+                            {
+                                me.ParentMatchup = matchups.Where(x => x.Id == me.ParentMatchupId).First();
+                            }
+                        }
                     }
+                    
+                    List<MatchupModel> currentRow = new List<MatchupModel>();
+                    int currentRound = 1;
+
+                    foreach (MatchupModel m in matchups)
+                    {
+                        if(m.MatchupRound > currentRound)
+                        {
+                            t.Rounds.Add(currentRow);
+                            currentRow = new List<MatchupModel>();
+                            currentRound += 1;
+                        }
+
+                        currentRow.Add(m);
+                    }
+
+                    t.Rounds.Add(currentRow);
                 }
             }
 
-            // Return the list of people.
             return output;
         }
     }

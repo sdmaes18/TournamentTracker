@@ -16,6 +16,9 @@ namespace TrackerUI
     /// </summary>
     public partial class TournamentDashboardForm : Form
     {
+        /// <summary>
+        /// A list of tournaments.
+        /// </summary>
         public List<TournamentModel> tournaments = GlobalConfig.Connection.GetTournament_All();
 
         /// <summary>
@@ -24,16 +27,26 @@ namespace TrackerUI
         public TournamentDashboardForm()
         {
             this.InitializeComponent();
+            this.WireUpLists();
+        }
+
+        private void WireUpLists()
+        {
+            this.LoadExisitingTournamentDropDown.DataSource = null;
+            this.LoadExisitingTournamentDropDown.DataSource = this.tournaments;
+            this.LoadExisitingTournamentDropDown.DisplayMember = "TournamentName";
         }
 
         /// <summary>
-        /// Creates a tournament.
+        /// Opens the create tournament form.
         /// </summary>
         /// <param name="sender">The object that initiated the event.</param>
         /// <param name="e">The arguments of the event.</param>
         private void CreateTournamentButton_Click(object sender, EventArgs e)
         {
+            CreateTournamentForm frm = new CreateTournamentForm();
 
+            frm.Show();
         }
     }
 }
