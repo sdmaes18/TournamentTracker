@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrackerLibrary;
 
 namespace TrackerUI
 {
@@ -16,11 +17,17 @@ namespace TrackerUI
     public partial class TournamentViewForm : Form
     {
         /// <summary>
+        /// Represents the tourament to look at.
+        /// </summary>
+        private TournamentModel tournament;
+
+        /// <summary>
         /// Initializes a new instance of the TournamentViewForm class.
         /// </summary>
-        public TournamentViewForm()
+        public TournamentViewForm(TournamentModel model)
         {
             this.InitializeComponent();
+            this.tournament = model;
         }
     }
 }
