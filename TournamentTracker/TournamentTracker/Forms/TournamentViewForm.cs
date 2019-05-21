@@ -28,6 +28,16 @@ namespace TrackerUI
         {
             this.InitializeComponent();
             this.tournament = model;
+
+            this.LoadFormData();
+        }
+
+        /// <summary>
+        /// Loads the tournament data.
+        /// </summary>
+        private void LoadFormData()
+        {
+            this.TournamentNamelbl.Text = this.tournament.TournamentName;
         }
     }
 }
