@@ -35,6 +35,7 @@ namespace TrackerUI
             this.tournament = model;
 
             this.LoadFormData();
+            this.LoadRounds();
         }
 
         /// <summary>
@@ -50,6 +51,8 @@ namespace TrackerUI
         /// </summary>
         private void LoadRounds()
         {
+            this.rounds = new List<int>();
+
             this.rounds.Add(1);
 
             int currentRound = 1;
@@ -62,6 +65,14 @@ namespace TrackerUI
                     this.rounds.Add(currentRound);
                 }
             }
+
+            this.WireUpLists();
+        }
+
+        private void WireUpLists()
+        {
+            this.RoundDropDowncbox.DataSource = null;
+            this.RoundDropDowncbox.DataSource = this.rounds;
         }
     }
 }
