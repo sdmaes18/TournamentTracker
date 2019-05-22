@@ -82,6 +82,7 @@
             this.RoundDropDowncbox.Name = "RoundDropDowncbox";
             this.RoundDropDowncbox.Size = new System.Drawing.Size(223, 53);
             this.RoundDropDowncbox.TabIndex = 3;
+            this.RoundDropDowncbox.SelectedIndexChanged += new System.EventHandler(this.RoundDropDowncbox_SelectedIndexChanged);
             // 
             // UnPlayOnlybox
             // 
@@ -176,7 +177,6 @@
             this.Vslbl.TabIndex = 12;
             this.Vslbl.Text = "vs";
             this.Vslbl.UseWaitCursor = true;
-            //this.Vslbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // Scorebtn
             // 

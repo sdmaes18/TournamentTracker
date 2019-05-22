@@ -27,6 +27,11 @@ namespace TrackerUI
         public List<int> rounds = new List<int>();
 
         /// <summary>
+        /// A list of matchups to be displayed.
+        /// </summary>
+        public List<MatchupModel> matchups = new List<MatchupModel>();
+
+        /// <summary>
         /// Initializes a new instance of the TournamentViewForm class.
         /// </summary>
         public TournamentViewForm(TournamentModel model)
@@ -66,13 +71,54 @@ namespace TrackerUI
                 }
             }
 
-            this.WireUpLists();
+            this.WireUpRoundsLists();
         }
 
-        private void WireUpLists()
+        /// <summary>
+        /// Updates the drop down list box.
+        /// </summary>
+        private void WireUpRoundsLists()
         {
             this.RoundDropDowncbox.DataSource = null;
             this.RoundDropDowncbox.DataSource = this.rounds;
+        }
+
+        /// <summary>
+        /// Updates the matchus list box.
+        /// </summary>
+        private void WireUpMatchUpssLists()
+        {
+            this.Matchuplbox.DataSource = null;
+            this.Matchuplbox.DataSource = this.matchups;
+            this.Matchuplbox.DisplayMember = "DisplayName";
+        }
+
+        /// <summary>
+        /// Every time a round is changed in the dropdown, display matchups.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void RoundDropDowncbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadMatchupList();
+        }
+
+        /// <summary>
+        /// Loads the matchups for the specified round.
+        /// </summary>
+        private void LoadMatchupList()
+        {
+            int round = (int)this.RoundDropDowncbox.SelectedItem;
+
+            foreach (List<MatchupModel> item in this.tournament.Rounds)
+            {
+                if (item.First().MatchupRound == round)
+                {
+                    this.matchups = item;
+                }
+            }
+
+            this.WireUpMatchUpssLists();
         }
     }
 }

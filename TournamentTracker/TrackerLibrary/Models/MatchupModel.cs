@@ -31,5 +31,29 @@ namespace TrackerLibrary
         /// Gets or sets the round of the matchup.
         /// </summary>
         public int MatchupRound { get; set; }
+
+        /// <summary>
+        /// Get the names of the teams in a specific round.
+        /// </summary>
+        public string DisplayName
+        {
+            get
+            {
+                string output = "";
+                foreach (MatchupEntryModel me in this.Entries)
+                {
+                    if (output.Length == 0)
+                    {
+                        output = me.TeamCompeting.TeamName;
+                    }
+                    else
+                    {
+                        output += $" vs. { me.TeamCompeting.TeamName }";
+                    }
+                }
+
+                return output;
+            }       
+         }
     }
 }
