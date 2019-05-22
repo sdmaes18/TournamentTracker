@@ -106,6 +106,7 @@
             this.Matchuplbox.Name = "Matchuplbox";
             this.Matchuplbox.Size = new System.Drawing.Size(343, 272);
             this.Matchuplbox.TabIndex = 5;
+            this.Matchuplbox.SelectedIndexChanged += new System.EventHandler(this.Matchuplbox_SelectedIndexChanged);
             // 
             // TeamOneName
             // 

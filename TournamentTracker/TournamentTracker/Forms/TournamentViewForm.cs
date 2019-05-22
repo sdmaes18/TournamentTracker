@@ -120,5 +120,31 @@ namespace TrackerUI
 
             this.WireUpMatchUpssLists();
         }
+
+        /// <summary>
+        /// Gets the selected matchup and displays the data on the form.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void Matchuplbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadMatchup();
+        }
+
+        /// <summary>
+        /// Loads the matchup on the form.
+        /// </summary>
+        private void LoadMatchup()
+        {
+            MatchupModel m = this.Matchuplbox.SelectedItem as MatchupModel;
+
+            for (int i = 0; i < m.Entries.Count; i++ )
+            {
+                if ( i == 0 )
+                {
+
+                }
+            }
+        }
     }
 }
