@@ -42,13 +42,21 @@ namespace TrackerLibrary
                 string output = "";
                 foreach (MatchupEntryModel me in this.Entries)
                 {
-                    if (output.Length == 0)
+                    if (me.TeamCompeting != null)
                     {
-                        output = me.TeamCompeting.TeamName;
+                        if (output.Length == 0)
+                        {
+                            output = me.TeamCompeting.TeamName;
+                        }
+                        else
+                        {
+                            output += $" vs. { me.TeamCompeting.TeamName }";
+                        }
                     }
                     else
                     {
-                        output += $" vs. { me.TeamCompeting.TeamName }";
+                        output = "Matchup not yet determined.";
+                        break;
                     }
                 }
 
