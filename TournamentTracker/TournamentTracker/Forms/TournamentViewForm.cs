@@ -57,6 +57,9 @@ namespace TrackerUI
             this.RoundDropDowncbox.DataSource = this.rounds;
         }
 
+        /// <summary>
+        /// Wires up matchup list box with matches for tournament.
+        /// </summary>
         private void WireUpMatchUpsList()
         {
             //this.Matchuplbox.DataSource = null;
