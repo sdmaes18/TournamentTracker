@@ -59,7 +59,7 @@ namespace TrackerUI
             this.Matchuplbox.DataSource = this.selectedMatchups;
             this.Matchuplbox.DisplayMember = "DisplayName";
         }
-        
+
         /// <summary>
         /// Determines the number of rounds to display in dropdown.
         /// </summary>
@@ -94,19 +94,46 @@ namespace TrackerUI
                     this.selectedMatchups.Clear();
                     foreach (MatchupModel m in matchup)
                     {
-                        this.selectedMatchups.Add(m);
+                        if (m.Winner == null || !this.UnPlayOnlybox.Checked)
+                        {
+                            this.selectedMatchups.Add(m);
+                        }
                     }
                 }
             }
 
-            this.LoadMatchUp(this.selectedMatchups.First());
+            if (this.selectedMatchups.Count > 0)
+            {
+                this.LoadMatchUp(this.selectedMatchups.First());
+            }
+
+            this.DisplayMatchupInfo();
+        }
+
+        /// <summary>
+        /// Displays matchup information is visable on form.
+        /// </summary>
+        private void DisplayMatchupInfo()
+        {
+            bool isVisable = this.selectedMatchups.Count > 0;
+
+            this.TeamOneName.Visible = isVisable;
+            this.TeamOneScorelbl.Visible = isVisable;
+            this.TeamOneScoreValuetbox.Visible = isVisable;
+
+            this.TeamTwoNamelbl.Visible = isVisable;
+            this.TeamTwoScorelbl.Visible = isVisable;
+            this.TeamTwoScoreValuetbox.Visible = isVisable;
+
+            this.Vslbl.Visible = isVisable;
+            this.Scorebtn.Visible = isVisable;
         }
 
         /// <summary>
         /// Anytime the rounds change update the matchups for the round.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
         private void RoundDropDowncbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.LoadMatchups((int)this.RoundDropDowncbox.SelectedItem);
@@ -115,8 +142,8 @@ namespace TrackerUI
         /// <summary>
         /// Anytime the matchups change in the listbox, display the selected matchup.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
         private void Matchuplbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.Matchuplbox.SelectedItem == null)
@@ -133,9 +160,9 @@ namespace TrackerUI
         /// <param name="m">Matchup to display.</param>
         private void LoadMatchUp(MatchupModel m)
         {
-            for (int i =0; i < m.Entries.Count; i++)
+            for (int i = 0; i < m.Entries.Count; i++)
             {
-                if (i==0)
+                if (i == 0)
                 {
                     if (m.Entries[0].TeamCompeting != null)
                     {
@@ -158,7 +185,7 @@ namespace TrackerUI
                     {
                         this.TeamTwoNamelbl.Text = m.Entries[1].TeamCompeting.TeamName;
                         this.TeamOneScoreValuetbox.Text = m.Entries[1].Score.ToString();
-                        
+
                     }
                     else
                     {
@@ -167,6 +194,87 @@ namespace TrackerUI
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// If checked shows only unplayed matchups and vis versa.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void UnPlayOnlybox_CheckedChanged(object sender, EventArgs e)
+        {
+            this.LoadMatchups((int)this.RoundDropDowncbox.SelectedItem);
+        }
+
+        /// <summary>
+        /// Score the current matchup.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void Scorebtn_Click(object sender, EventArgs e)
+        {
+            MatchupModel m = (MatchupModel)this.Matchuplbox.SelectedItem;
+
+            double teamOneScore = 0;
+            double teamTwoScore = 0;
+
+            for (int i = 0; i < m.Entries.Count; i++)
+            {
+                if (i == 0)
+                {
+                    if (m.Entries[0].TeamCompeting != null)
+                    {
+                        bool ScoreValid = double.TryParse(this.TeamOneScoreValuetbox.Text, out teamOneScore);
+
+                        if (ScoreValid)
+                        {
+                            m.Entries[0].Score = teamOneScore;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter a valid score for team one.");
+                            return;
+                        }
+                    }
+                }
+
+                if (i == 1)
+                {
+                    if (m.Entries[1].TeamCompeting != null)
+                    {
+                        bool ScoreValid = double.TryParse(this.TeamTwoScoreValuetbox.Text, out teamTwoScore);
+
+                        if (ScoreValid)
+                        {
+                            m.Entries[1].Score = teamTwoScore;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter a valid score for team two.");
+                            return;
+                        }
+
+                    }
+                  
+                }
+            }
+
+            if (teamOneScore > teamTwoScore)
+            {
+                m.Winner = m.Entries[0].TeamCompeting;
+            }
+            else if(teamTwoScore > teamOneScore)
+            {
+                m.Winner = m.Entries[1].TeamCompeting;
+            }
+            else
+            {
+                MessageBox.Show("Do not handle tie games, need a winner.");
+            }
+
+            this.LoadMatchups((int)this.RoundDropDowncbox.SelectedItem);
+
+
         }
     }
 }

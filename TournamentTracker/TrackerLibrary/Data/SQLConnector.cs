@@ -357,5 +357,14 @@ namespace TrackerLibrary
 
             return output;
         }
+
+        /// <summary>
+        /// Updates a selected matchup and saves to the database.
+        /// </summary>
+        /// <param name="model">Model to update and save.</param>
+        public void UpdateMatchup(MatchupModel model)
+        {
+            
+        }
     }
 }

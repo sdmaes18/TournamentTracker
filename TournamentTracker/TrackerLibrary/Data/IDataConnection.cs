@@ -55,5 +55,11 @@ namespace TrackerLibrary
         /// </summary>
         /// <returns>A list of tournaments we have.</returns>
         List<TournamentModel> GetTournament_All();
+
+        /// <summary>
+        /// Updates a selected matchup.
+        /// </summary>
+        /// <param name="model">Matchup to update.</param>
+        void UpdateMatchup(MatchupModel model);
     }
 }

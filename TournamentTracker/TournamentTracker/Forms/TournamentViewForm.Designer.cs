@@ -96,6 +96,7 @@
             this.UnPlayOnlybox.TabIndex = 4;
             this.UnPlayOnlybox.Text = "Unplayed Only";
             this.UnPlayOnlybox.UseVisualStyleBackColor = true;
+            this.UnPlayOnlybox.CheckedChanged += new System.EventHandler(this.UnPlayOnlybox_CheckedChanged);
             // 
             // Matchuplbox
             // 
@@ -192,6 +193,7 @@
             this.Scorebtn.TabIndex = 13;
             this.Scorebtn.Text = "Score";
             this.Scorebtn.UseVisualStyleBackColor = true;
+            this.Scorebtn.Click += new System.EventHandler(this.Scorebtn_Click);
             // 
             // TournamentViewForm
             // 
