@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using TrackerLibrary;
@@ -12,158 +13,157 @@ namespace TrackerUI
     public partial class TournamentViewForm : Form
     {
         /// <summary>
-        /// Represents the tourament to look at.
+        /// Tournament Model to be loaded.
         /// </summary>
         private TournamentModel tournament;
 
         /// <summary>
-        /// A list of rounds for the tournament.
+        /// A list representing the number of rounds for the tournament.
         /// </summary>
-        private List<int> rounds;
+        private BindingList<int> rounds = new BindingList<int>();
 
         /// <summary>
-        /// A list of matchups for the tournament.
+        /// A list of matchups for the round(s) in the tournament.
         /// </summary>
-        private List<MatchupModel> matchups;
+        private BindingList<MatchupModel> selectedMatchups = new BindingList<MatchupModel>();
 
         /// <summary>
         /// Initializes a new instance of the TournamentViewForm class.
         /// </summary>
+        /// <param name="model">Tournament to load.</param>
         public TournamentViewForm(TournamentModel model)
         {
             this.InitializeComponent();
             this.tournament = model;
-            this.rounds = new List<int>();
-            this.matchups = new List<MatchupModel>();
 
-            this.WireUpFormData();
-            this.LoadRound();
+            this.WireUpLists();
+
+            this.LoadFormData();
+            this.LoadRounds();
         }
 
         /// <summary>
-        /// Loads tournament data onto form.
+        /// Loads form data about the tournament.
         /// </summary>
-        private void WireUpFormData()
+        private void LoadFormData()
         {
             this.TournamentNamelbl.Text = this.tournament.TournamentName;
         }
 
         /// <summary>
-        /// Loads list data such as rounds to the form.
+        /// Applies data to the drop down and list box.
         /// </summary>
-        private void WireUpRoundsLists()
+        private void WireUpLists()
         {
-            //this.RoundDropDowncbox.DataSource = null;
             this.RoundDropDowncbox.DataSource = this.rounds;
-        }
-
-        /// <summary>
-        /// Wires up matchup list box with matches for tournament.
-        /// </summary>
-        private void WireUpMatchUpsList()
-        {
-            //this.Matchuplbox.DataSource = null;
-            this.Matchuplbox.DataSource = this.matchups;
+            this.Matchuplbox.DataSource = this.selectedMatchups;
             this.Matchuplbox.DisplayMember = "DisplayName";
         }
-
+        
         /// <summary>
-        /// Loads the round(s) of the tournament.
+        /// Determines the number of rounds to display in dropdown.
         /// </summary>
-        private void LoadRound()
+        private void LoadRounds()
         {
-            this.rounds = new List<int>();
-
+            this.rounds.Clear();
             this.rounds.Add(1);
             int currentRound = 1;
 
-            foreach(List<MatchupModel> matchups in this.tournament.Rounds)
+            foreach (List<MatchupModel> matchup in this.tournament.Rounds)
             {
-                if (matchups.First().MatchupRound > currentRound)
+                if (matchup.First().MatchupRound > currentRound)
                 {
-                    currentRound = matchups.First().MatchupRound;
+                    currentRound = matchup.First().MatchupRound;
                     this.rounds.Add(currentRound);
                 }
             }
 
-            this.WireUpRoundsLists();
+            this.LoadMatchups(1);
         }
 
         /// <summary>
-        /// Whenever an item is changed in the dropdown, update the matchup list box.
+        /// Determines what matchups to display.
         /// </summary>
-        /// <param name="sender">The object that initiated the event.</param>
-        /// <param name="e">The arguments of the event.</param>
-        private void RoundDropDowncbox_SelectedIndexChanged(object sender, EventArgs e)
+        /// <param name="round">Round to display matchups in.</param>
+        private void LoadMatchups(int round)
         {
-            this.LoadMatchups();
-        }
-
-        /// <summary>
-        /// Load the matchups for the tourament for a given round.
-        /// </summary>
-        private void LoadMatchups()
-        {
-            int round = (int)this.RoundDropDowncbox.SelectedItem;
-
-            foreach (List<MatchupModel> matchups in this.tournament.Rounds)
+            foreach (List<MatchupModel> matchup in this.tournament.Rounds)
             {
-                if (matchups.First().MatchupRound == round)
+                if (matchup.First().MatchupRound == round)
                 {
-                    this.matchups = matchups;
+                    this.selectedMatchups.Clear();
+                    foreach (MatchupModel m in matchup)
+                    {
+                        this.selectedMatchups.Add(m);
+                    }
                 }
             }
 
-            this.WireUpMatchUpsList();
+            this.LoadMatchUp(this.selectedMatchups.First());
         }
 
         /// <summary>
-        /// Loads a selected matchup from the listbox dispaly.
+        /// Anytime the rounds change update the matchups for the round.
         /// </summary>
-        /// <param name="sender">The object that initiated the event.</param>
-        /// <param name="e">The arguments of the event.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RoundDropDowncbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadMatchups((int)this.RoundDropDowncbox.SelectedItem);
+        }
+
+        /// <summary>
+        /// Anytime the matchups change in the listbox, display the selected matchup.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Matchuplbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.LoadMatchup();
+            if (this.Matchuplbox.SelectedItem == null)
+            {
+                return;
+            }
+
+            this.LoadMatchUp((MatchupModel)this.Matchuplbox.SelectedItem);
         }
 
         /// <summary>
-        /// Load a single matchup to the form.
+        /// Load the selected matchup and display data to form.
         /// </summary>
-        private void LoadMatchup()
+        /// <param name="m">Matchup to display.</param>
+        private void LoadMatchUp(MatchupModel m)
         {
-            MatchupModel m = (MatchupModel)this.Matchuplbox.SelectedItem;
-
-            for( int i = 0; i < m.Entries.Count; i++ )
+            for (int i =0; i < m.Entries.Count; i++)
             {
-                if ( i == 0 )
+                if (i==0)
                 {
-                    if ( m.Entries[0].TeamCompeting != null )
+                    if (m.Entries[0].TeamCompeting != null)
                     {
                         this.TeamOneName.Text = m.Entries[0].TeamCompeting.TeamName;
                         this.TeamOneScoreValuetbox.Text = m.Entries[0].Score.ToString();
 
-                        this.TeamTwoNamelbl.Text = "<Bye>";
+                        this.TeamTwoNamelbl.Text = "<BYE>";
                         this.TeamTwoScoreValuetbox.Text = "0";
                     }
                     else
                     {
-                        this.TeamOneName.Text = "Not yet set.";
+                        this.TeamOneName.Text = "Not yet set";
                         this.TeamOneScoreValuetbox.Text = "0";
                     }
                 }
 
-                if ( i == 1 )
+                if (i == 1)
                 {
-                    if ( m.Entries[1].TeamCompeting != null )
+                    if (m.Entries[1].TeamCompeting != null)
                     {
                         this.TeamTwoNamelbl.Text = m.Entries[1].TeamCompeting.TeamName;
-                        this.TeamTwoScoreValuetbox.Text = m.Entries[1].Score.ToString();
+                        this.TeamOneScoreValuetbox.Text = m.Entries[1].Score.ToString();
+                        
                     }
                     else
                     {
-                        this.TeamTwoNamelbl.Text = "Not yet set.";
-                        this.TeamTwoScoreValuetbox.Text = "0";
+                        this.TeamTwoNamelbl.Text = "Not yet set";
+                        this.TeamOneScoreValuetbox.Text = "0";
                     }
                 }
             }
