@@ -367,10 +367,13 @@ namespace TrackerLibrary
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
             {
                 var p = new DynamicParameters();
-                p.Add("@id", model.Id);
-                p.Add("@WinnerId", model.WinnerId);
+                if (model.Winner != null)
+                {
+                    p.Add("@id", model.Id);
+                    p.Add("@WinnerId", model.WinnerId);
 
-                connection.Execute("dbo.spMatchups_Update", p, commandType: CommandType.StoredProcedure);
+                    connection.Execute("dbo.spMatchups_Update", p, commandType: CommandType.StoredProcedure); 
+                }
 
                 foreach(MatchupEntryModel me in model.Entries)
                 {
