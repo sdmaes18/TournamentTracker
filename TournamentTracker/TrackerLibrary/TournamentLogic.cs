@@ -30,6 +30,48 @@ namespace TrackerLibrary
         }
 
         /// <summary>
+        /// Updates the tournament.
+        /// </summary>
+        /// <param name="model"></param>
+        public static void UpdateTournamentResults(TournamentModel model)
+        {
+            if (teamOneScore > teamTwoScore)
+            {
+                m.Winner = m.Entries[0].TeamCompeting;
+            }
+            else if (teamTwoScore > teamOneScore)
+            {
+                m.Winner = m.Entries[1].TeamCompeting;
+            }
+            else
+            {
+                MessageBox.Show("Do not handle tie games, need a winner.");
+            }
+
+            foreach (List<MatchupModel> round in this.tournament.Rounds)
+            {
+                foreach (MatchupModel roundMatchup in round)
+                {
+                    foreach (MatchupEntryModel me in roundMatchup.Entries)
+                    {
+                        if (me.ParentMatchup != null)
+                        {
+                            if (me.ParentMatchup.Id == m.Id)
+                            {
+                                me.TeamCompeting = m.Winner;
+                                GlobalConfig.Connection.UpdateMatchup(roundMatchup);
+                            }
+                        }
+                    }
+                }
+            }
+
+            this.LoadMatchups((int)this.RoundDropDowncbox.SelectedItem);
+
+            GlobalConfig.Connection.UpdateMatchup(m);
+        }
+
+        /// <summary>
         /// Creates the rest of the rounds other than the first round.
         /// </summary>
         /// <param name="model">Tournament to create rounds for.</param>
