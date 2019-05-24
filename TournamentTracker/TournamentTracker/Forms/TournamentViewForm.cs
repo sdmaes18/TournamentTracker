@@ -184,13 +184,14 @@ namespace TrackerUI
                     if (m.Entries[1].TeamCompeting != null)
                     {
                         this.TeamTwoNamelbl.Text = m.Entries[1].TeamCompeting.TeamName;
-                        this.TeamOneScoreValuetbox.Text = m.Entries[1].Score.ToString();
+                        //this.TeamOneScoreValuetbox.Text = m.Entries[1].Score.ToString();
+                        this.TeamTwoScoreValuetbox.Text = m.Entries[1].Score.ToString();
 
                     }
                     else
                     {
                         this.TeamTwoNamelbl.Text = "Not yet set";
-                        this.TeamOneScoreValuetbox.Text = "0";
+                        this.TeamTwoScoreValuetbox.Text  = "0";
                     }
                 }
             }
