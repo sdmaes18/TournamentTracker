@@ -20,7 +20,7 @@ namespace TrackerLibrary
         /// </summary>
         /// <param name="model">Person to create.</param>
         /// <returns>A model of the new person.</returns>
-        public PersonModel CreatePerson(PersonModel model)
+        public void CreatePerson(PersonModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
             {
@@ -34,8 +34,6 @@ namespace TrackerLibrary
                 connection.Execute("dbo.spPeople_Insert", p, commandType: CommandType.StoredProcedure);
 
                 model.Id = p.Get<int>("@id");
-
-                return model;
             }
         }
 
@@ -45,7 +43,7 @@ namespace TrackerLibrary
         /// </summary>
         /// <param name="model">The model to create.</param>
         /// <returns>The created model.</returns>
-        public PrizeModel CreatePrize(PrizeModel model)
+        public void CreatePrize(PrizeModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
             {
@@ -59,8 +57,6 @@ namespace TrackerLibrary
                 connection.Execute("dbo.spPrizes_Insert", p, commandType: CommandType.StoredProcedure);
 
                 model.Id = p.Get<int>("@id");
-
-                return model;
             }
         }
 
@@ -69,7 +65,7 @@ namespace TrackerLibrary
         /// </summary>
         /// <param name="model">Model of the new team.</param>
         /// <returns>A new team model.</returns>
-        public TeamModel CreateTeam(TeamModel model)
+        public void CreateTeam(TeamModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
             {
@@ -89,7 +85,6 @@ namespace TrackerLibrary
                     connection.Execute("dbo.spTeamMembers_Insert", p, commandType: CommandType.StoredProcedure);
                 }
 
-                return model;
             }
         }
 

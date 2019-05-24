@@ -92,7 +92,7 @@ namespace TrackerUI
                 person.CellphoneNumber = this.CellPhoneValue.Text;
 
                 // Connect to data connection. Which is either sql or textfile.
-                person = GlobalConfig.Connection.CreatePerson(person);
+                GlobalConfig.Connection.CreatePerson(person);
 
                 this.selectedTeamMembers.Add(person);
 
