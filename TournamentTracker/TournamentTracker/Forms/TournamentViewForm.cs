@@ -274,7 +274,7 @@ namespace TrackerUI
 
             this.LoadMatchups((int)this.RoundDropDowncbox.SelectedItem);
 
-
+            GlobalConfig.Connection.UpdateMatchup(m);
         }
     }
 }

@@ -190,9 +190,13 @@ namespace TrackerLibrary
 
         }
 
+        /// <summary>
+        /// Updates a matchup to a text file.
+        /// </summary>
+        /// <param name="model">Model to update.</param>
         public void UpdateMatchup(MatchupModel model)
         {
-            throw new NotImplementedException();
+            model.UpdateMatchupToFile();
         }
     }
 }

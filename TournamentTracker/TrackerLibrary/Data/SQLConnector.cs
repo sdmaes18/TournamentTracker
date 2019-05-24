@@ -376,7 +376,7 @@ namespace TrackerLibrary
                 {
                     p = new DynamicParameters();
                     p.Add("@id", me.Id);
-                    p.Add("@TeamCompeting", me.TeamCompeting.Id);
+                    p.Add("@TeamCompetingId", me.TeamCompeting.Id);
                     p.Add("@Score", me.Score);
 
                     connection.Execute("dbo.spMatchupEntries_Update", p, commandType: CommandType.StoredProcedure);
