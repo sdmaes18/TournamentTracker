@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 
 namespace TrackerLibrary
@@ -75,6 +76,8 @@ namespace TrackerLibrary
 
         private static void ScoreMatchups(List<MatchupModel> matchups)
         {
+            // Greater or lesser than scoring.
+            string scoreDirection = ConfigurationManager.AppSettings['winnerDetermination'];
             //if (teamOneScore > teamTwoScore)
             //{
             //    m.Winner = m.Entries[0].TeamCompeting;
