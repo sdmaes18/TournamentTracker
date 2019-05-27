@@ -51,29 +51,18 @@ namespace TrackerLibrary
 
             TournamentLogic.ScoreMatchups(toScore);
 
-          
+            TournamentLogic.AdvanceWinners(toScore);
 
-            //foreach (List<MatchupModel> round in model.Rounds)
-            //{
-            //    foreach (MatchupModel roundMatchup in round)
-            //    {
-            //        foreach (MatchupEntryModel me in roundMatchup.Entries)
-            //        {
-            //            if (me.ParentMatchup != null)
-            //            {
-            //                if (me.ParentMatchup.Id == m.Id)
-            //                {
-            //                    me.TeamCompeting = m.Winner;
-            //                    GlobalConfig.Connection.UpdateMatchup(roundMatchup);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-
-            //GlobalConfig.Connection.UpdateMatchup(m);
         }
 
+        private static void AdvanceWinners(List<MatchupModel> matchups)
+        {
+        }
+
+        /// <summary>
+        /// Scores each matchup to determine winners.
+        /// </summary>
+        /// <param name="matchups">Matchups to score.</param>
         private static void ScoreMatchups(List<MatchupModel> matchups)
         {
             // Greater or lesser than scoring.
@@ -107,8 +96,18 @@ namespace TrackerLibrary
                 }
                 else
                 {
-                    // High score wins.
-
+                        if (m.Entries[0].Score > m.Entries[1].Score)
+                        {
+                            m.Winner = m.Entries[0].TeamCompeting;
+                        }
+                        else if (m.Entries[1].Score > m.Entries[0].Score)
+                        {
+                            m.Winner = m.Entries[1].TeamCompeting;
+                        }
+                        else
+                        {
+                            throw new Exception("No ties allowed. Please declare a winner.");
+                        }
                 } 
             }
         }
