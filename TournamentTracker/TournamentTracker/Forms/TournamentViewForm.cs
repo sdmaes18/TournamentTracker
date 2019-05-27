@@ -208,12 +208,54 @@ namespace TrackerUI
         }
 
         /// <summary>
+        /// Determines if the data is valid on the form or not.
+        /// </summary>
+        /// <returns>True if values are valid / false is data is not valid.</returns>
+        private string IsValidData()
+        {
+            string output = "";
+            double teamOneScore = 0;
+            double teamTwoScore = 0;
+            bool ScoreOneValid = double.TryParse(this.TeamOneScoreValuetbox.Text, out teamOneScore);
+            bool ScoreTwoValid = double.TryParse(this.TeamTwoScoreValuetbox.Text, out teamTwoScore);
+
+            if (!ScoreOneValid)
+            {
+                output = "Score one is not a valid number.";
+            }
+
+            if (!ScoreTwoValid)
+            {
+                output = "Score two is not a valid number.";
+            }
+
+            if (teamOneScore == 0 && teamTwoScore == 0)
+            {
+                output = "You didn't enter a score for either team.";
+            }
+
+            if (teamOneScore == teamTwoScore)
+            {
+                output = "We do not allow ties. Please declare a winner.";
+            }
+
+            return output;
+        }
+
+        /// <summary>
         /// Score the current matchup.
         /// </summary>
         /// <param name="sender">The object that initiated the event.</param>
         /// <param name="e">The arguments of the event.</param>
         private void Scorebtn_Click(object sender, EventArgs e)
         {
+            string error = this.IsValidData();
+            if (error.Length > 0)
+            {
+                MessageBox.Show($"Input error: { error }");
+                return;
+            }
+
             MatchupModel m = (MatchupModel)this.Matchuplbox.SelectedItem;
 
             double teamOneScore = 0;
