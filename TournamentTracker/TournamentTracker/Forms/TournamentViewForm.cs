@@ -223,18 +223,15 @@ namespace TrackerUI
             {
                 output = "Score one is not a valid number.";
             }
-
-            if (!ScoreTwoValid)
+            else if (!ScoreTwoValid)
             {
                 output = "Score two is not a valid number.";
             }
-
-            if (teamOneScore == 0 && teamTwoScore == 0)
+            else if (teamOneScore == 0 && teamTwoScore == 0)
             {
                 output = "You didn't enter a score for either team.";
             }
-
-            if (teamOneScore == teamTwoScore)
+            else if (teamOneScore == teamTwoScore)
             {
                 output = "We do not allow ties. Please declare a winner.";
             }
@@ -305,11 +302,11 @@ namespace TrackerUI
             try
             {
                 TournamentLogic.UpdateTournamentResults(this.tournament);
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Application Error: { ex.Message }");
+                return;
             }          
             this.LoadMatchups((int)this.RoundDropDowncbox.SelectedItem);
         }
