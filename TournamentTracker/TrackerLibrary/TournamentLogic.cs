@@ -53,6 +53,7 @@ namespace TrackerLibrary
 
             TournamentLogic.AdvanceWinners(toScore, model);
 
+            toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
         }
 
         /// <summary>
