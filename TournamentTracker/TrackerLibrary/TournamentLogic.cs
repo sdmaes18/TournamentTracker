@@ -77,21 +77,40 @@ namespace TrackerLibrary
         private static void ScoreMatchups(List<MatchupModel> matchups)
         {
             // Greater or lesser than scoring.
-            string scoreDirection = ConfigurationManager.AppSettings["winnerDetermination"];
+            string greaterWins = ConfigurationManager.AppSettings["greaterWins"];
 
+            foreach (MatchupModel m in matchups)
+            {
+                // Bye week handling.
+                if (m.Entries.Count == 1)
+                {
+                    m.Winner = m.Entries[0].TeamCompeting;
+                    continue;
+                }
+              
+                // 0 means false and low score will win. Based on app.config settings.
+                if (greaterWins == "0")
+                {
+                    if (m.Entries[0].Score < m.Entries[1].Score)
+                    {
+                        m.Winner = m.Entries[0].TeamCompeting;
+                    }
+                    else if (m.Entries[1].Score < m.Entries[0].Score)
+                    {
+                        m.Winner = m.Entries[1].TeamCompeting;
+                    }
+                    else
+                    {
+                        throw new Exception("No ties allowed. Please declare a winner.");
+                    }
 
-            //if (teamOneScore > teamTwoScore)
-            //{
-            //    m.Winner = m.Entries[0].TeamCompeting;
-            //}
-            //else if (teamTwoScore > teamOneScore)
-            //{
-            //    m.Winner = m.Entries[1].TeamCompeting;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Do not handle tie games, need a winner.");
-            //}
+                }
+                else
+                {
+                    // High score wins.
+
+                } 
+            }
         }
 
         /// <summary>
