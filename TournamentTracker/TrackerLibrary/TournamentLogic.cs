@@ -35,18 +35,22 @@ namespace TrackerLibrary
         /// <param name="model"></param>
         public static void UpdateTournamentResults(TournamentModel model)
         {
-            //if (teamOneScore > teamTwoScore)
-            //{
-            //    m.Winner = m.Entries[0].TeamCompeting;
-            //}
-            //else if (teamTwoScore > teamOneScore)
-            //{
-            //    m.Winner = m.Entries[1].TeamCompeting;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Do not handle tie games, need a winner.");
-            //}
+            List<MatchupModel> toScore = new List<MatchupModel>();
+
+            foreach (List<MatchupModel> round in model.Rounds)
+            {
+                foreach (MatchupModel roundMatchup in round)
+                {
+                    if (roundMatchup.Winner == null &&  (roundMatchup.Entries.Any(x => x.Score != 0) || roundMatchup.Entries.Count == 1))
+                    {
+                        toScore.Add(roundMatchup);
+                    }
+                }
+            }
+
+            TournamentLogic.ScoreMatchups(toScore);
+
+          
 
             //foreach (List<MatchupModel> round in model.Rounds)
             //{
@@ -67,6 +71,22 @@ namespace TrackerLibrary
             //}
 
             //GlobalConfig.Connection.UpdateMatchup(m);
+        }
+
+        private static void ScoreMatchups(List<MatchupModel> matchups)
+        {
+            //if (teamOneScore > teamTwoScore)
+            //{
+            //    m.Winner = m.Entries[0].TeamCompeting;
+            //}
+            //else if (teamTwoScore > teamOneScore)
+            //{
+            //    m.Winner = m.Entries[1].TeamCompeting;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Do not handle tie games, need a winner.");
+            //}
         }
 
         /// <summary>
