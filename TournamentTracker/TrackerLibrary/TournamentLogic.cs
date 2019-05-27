@@ -77,7 +77,9 @@ namespace TrackerLibrary
         private static void ScoreMatchups(List<MatchupModel> matchups)
         {
             // Greater or lesser than scoring.
-            string scoreDirection = ConfigurationManager.AppSettings['winnerDetermination'];
+            string scoreDirection = ConfigurationManager.AppSettings["winnerDetermination"];
+
+
             //if (teamOneScore > teamTwoScore)
             //{
             //    m.Winner = m.Entries[0].TeamCompeting;
