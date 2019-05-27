@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary
 {
-    class Email
+    public static class Email
     {
+        public static void SendEmail(string from, List<string> to, string subject, string body)
+        {
+
+        }
     }
 }

@@ -61,8 +61,18 @@ namespace TrackerLibrary
 
             if (endingRound > tournamentRound)
             {
-                // Email users.
+                //Email.SendEmail();
             }
+        }
+
+        /// <summary>
+        /// When a new round is fully created, alert users.
+        /// </summary>
+        /// <param name="model">Tournament to update users in.</param>
+        /// <param name="currentRound">Round to email all users.</param>
+        private static void AlertUsersInNewRounds(this TournamentModel model, int currentRound)
+        {
+
         }
 
         /// <summary>
