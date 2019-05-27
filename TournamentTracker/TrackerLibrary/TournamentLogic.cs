@@ -28,6 +28,8 @@ namespace TrackerLibrary
             model.Rounds.Add(CreateFirstRound(byeRounds, randomizedTeams));
 
             CreateOtherRounds(model, rounds);
+
+            UpdateTournamentResults(model);
         }
 
         /// <summary>

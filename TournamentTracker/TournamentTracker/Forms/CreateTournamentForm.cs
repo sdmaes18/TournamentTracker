@@ -144,6 +144,10 @@ namespace TrackerUI
 
             // Create tournament entries.
             GlobalConfig.Connection.CreateTournament(model);
+
+            TournamentViewForm fvfrm = new TournamentViewForm(model);
+            fvfrm.Show();
+            this.Close();
         }
 
         /// <summary>
