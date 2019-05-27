@@ -33,7 +33,7 @@ namespace TrackerLibrary
         /// <summary>
         /// Updates the tournament.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Tournament to update.</param>
         public static void UpdateTournamentResults(TournamentModel model)
         {
             List<MatchupModel> toScore = new List<MatchupModel>();
@@ -51,12 +51,37 @@ namespace TrackerLibrary
 
             TournamentLogic.ScoreMatchups(toScore);
 
-            TournamentLogic.AdvanceWinners(toScore);
+            TournamentLogic.AdvanceWinners(toScore, model);
 
         }
 
-        private static void AdvanceWinners(List<MatchupModel> matchups)
+        /// <summary>
+        /// Find every matchup in every rounds and update winner and parent matchup.
+        /// </summary>
+        /// <param name="models">A list of matchups</param>
+        /// <param name="tournament">The tournament to update.</param>
+        private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
         {
+            foreach (MatchupModel m in models)
+            {
+                foreach (List<MatchupModel> round in tournament.Rounds)
+                {
+                    foreach (MatchupModel roundMatch in round)
+                    {
+                        foreach (MatchupEntryModel me in roundMatch.Entries)
+                        {
+                            if (me.ParentMatchup != null)
+                            {
+                                if (me.ParentMatchupId == m.Id)
+                                {
+                                    me.TeamCompeting = m.Winner;
+                                    GlobalConfig.Connection.UpdateMatchup(m);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
