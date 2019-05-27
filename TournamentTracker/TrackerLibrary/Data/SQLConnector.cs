@@ -103,6 +103,8 @@ namespace TrackerLibrary
                 this.SaveTournamentEntries(connection, model);
 
                 this.SaveTournamentRounds(connection, model);
+
+                TournamentLogic.UpdateTournamentResults(model);
             }
         }
 

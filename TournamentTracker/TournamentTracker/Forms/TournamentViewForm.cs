@@ -259,8 +259,16 @@ namespace TrackerUI
                   
                 }
             }
-            TournamentLogic.UpdateTournamentResults(this.tournament);
-          
+
+            try
+            {
+                TournamentLogic.UpdateTournamentResults(this.tournament);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Application Error: { ex.Message }");
+            }          
             this.LoadMatchups((int)this.RoundDropDowncbox.SelectedItem);
         }
     }

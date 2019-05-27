@@ -125,6 +125,8 @@ namespace TrackerLibrary
             tournament.Add(model);
 
             tournament.SaveToTournamentFile();
+
+            TournamentLogic.UpdateTournamentResults(model);
         }
 
         /// <summary>
