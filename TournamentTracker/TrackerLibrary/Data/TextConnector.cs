@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TrackerLib.Data.TextHelpers;
 
@@ -32,14 +31,10 @@ namespace TrackerLibrary
         /// <returns>A model of the new person.</returns>
         public void CreatePerson(PersonModel model)
         {
-            // Load text file.
-            // Convert text to a list of prize model.
             List<PersonModel> people = GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
 
-            // If we have no data in prizes the starting id is 1.
             int currentId = 1;
 
-            // adds a new id if we already have data in file.
             if (people.Count > 0)
             {
                 currentId = currentId = people.OrderByDescending(x => x.Id).First().Id + 1;
@@ -47,11 +42,8 @@ namespace TrackerLibrary
 
             model.Id = currentId;
 
-            // Add a new record with new Id.
             people.Add(model);
 
-            // Convert the prizes to a list of string.
-            // Save a list of string to a textfile.
             people.SaveToPersonFile();
         }
 
@@ -122,16 +114,13 @@ namespace TrackerLibrary
         {
             List<TournamentModel> tournament = GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModel();
 
-            // If we have no data in prizes the starting id is 1.
             int currentId = 1;
 
-            // adds a new id if we already have data in file.
             if (tournament.Count > 0)
             {
                 currentId = currentId = tournament.OrderByDescending(x => x.Id).First().Id + 1;
             }
 
-            // New teams id.
             model.Id = currentId;
 
             model.SaveRoundsToFile();
@@ -168,7 +157,6 @@ namespace TrackerLibrary
         public List<TournamentModel> GetTournament_All()
         {
            return GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModel();
-
         }
 
         /// <summary>
