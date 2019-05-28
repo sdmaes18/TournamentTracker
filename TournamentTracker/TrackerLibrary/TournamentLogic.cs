@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 
 namespace TrackerLibrary
 {
@@ -36,17 +37,15 @@ namespace TrackerLibrary
         /// <param name="model">Tournament to update.</param>
         public static void UpdateTournamentResults(TournamentModel model)
         {
-            int tournamentRound = model.CheckCurrentRound();
-
             List<MatchupModel> toScore = new List<MatchupModel>();
 
             foreach (List<MatchupModel> round in model.Rounds)
             {
-                foreach (MatchupModel roundMatchup in round)
+                foreach (MatchupModel rm in round)
                 {
-                    if (roundMatchup.Winner == null &&  (roundMatchup.Entries.Any(x => x.Score != 0) || roundMatchup.Entries.Count == 1))
+                    if (rm.Winner == null && (rm.Entries.Any(x => x.Score != 0) || rm.Entries.Count == 1))
                     {
-                        toScore.Add(roundMatchup);
+                        toScore.Add(rm);
                     }
                 }
             }
@@ -55,24 +54,85 @@ namespace TrackerLibrary
 
             TournamentLogic.AdvanceWinners(toScore, model);
 
+
+
+
+
+
+            //int tournamentRound = model.CheckCurrentRound();
+                       
+            //TournamentLogic.AdvanceWinners(toScore, model);
+
             toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
 
-            int endingRound = model.CheckCurrentRound();
+            //int endingRound = model.CheckCurrentRound();
 
-            if (endingRound > tournamentRound)
-            {
-                //Email.SendEmail();
-            }
+            //if (endingRound > tournamentRound)
+            //{
+            //    TournamentLogic.AlertUsersInNewRounds(model);
+            //}
         }
 
         /// <summary>
         /// When a new round is fully created, alert users.
         /// </summary>
         /// <param name="model">Tournament to update users in.</param>
-        /// <param name="currentRound">Round to email all users.</param>
-        private static void AlertUsersInNewRounds(this TournamentModel model, int currentRound)
+        private static void AlertUsersInNewRounds(this TournamentModel model)
         {
+            int currentRoundNumber = model.CheckCurrentRound();
+            List<MatchupModel> currentRound = model.Rounds.Where(x => x.First().MatchupRound == currentRoundNumber).First();
 
+            foreach (MatchupModel m in currentRound)
+            {
+                foreach (MatchupEntryModel me in m.Entries)
+                {
+                    foreach (PersonModel person in me.TeamCompeting.TeamMembers)
+                    {
+                        AlertPersonToNewRound(person, me.TeamCompeting.TeamName, m.Entries.Where(x => x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Alerts person of the new round.
+        /// </summary>
+        /// <param name="person">Person to alert.</param>
+        /// <param name="teamName">Team they're on.</param>
+        /// <param name="matchupEntryModel">New Matchup to be played.</param>
+        private static void AlertPersonToNewRound(PersonModel person, string teamName, MatchupEntryModel matchupEntryModel)
+        {
+            if (person.EmailAddress.Length == 0)
+            {
+                return;
+            }
+
+            string to = "";
+            string subject = "";
+
+            StringBuilder sb = new StringBuilder();
+
+            if (matchupEntryModel != null)
+            {
+                subject = $"You have a new matchup with { matchupEntryModel.TeamCompeting.TeamName }";
+                sb.AppendLine("<h1>You have a new matchup!</h1>");
+                sb.Append("<strong>Competitor: </strong>");
+                sb.Append(matchupEntryModel.TeamCompeting.TeamName);
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.AppendLine("May the best team win!");
+                sb.AppendLine("~ Tournament Tracker / SM");
+            }
+            else
+            {
+                subject = "You have a bye week this round";
+                sb.Append("Enjoy your round off.");
+                sb.AppendLine("~ Tournament Tracker / SM");
+            }
+
+            to = person.EmailAddress;
+
+            Email.SendEmail(to, subject, sb.ToString());
         }
 
         /// <summary>
@@ -106,13 +166,13 @@ namespace TrackerLibrary
             {
                 foreach (List<MatchupModel> round in tournament.Rounds)
                 {
-                    foreach (MatchupModel roundMatch in round)
+                    foreach (MatchupModel rm in round)
                     {
-                        foreach (MatchupEntryModel me in roundMatch.Entries)
+                        foreach (MatchupEntryModel me in rm.Entries)
                         {
                             if (me.ParentMatchup != null)
                             {
-                                if (me.ParentMatchupId == m.Id)
+                                if (me.ParentMatchup.Id == m.Id)
                                 {
                                     me.TeamCompeting = m.Winner;
                                     GlobalConfig.Connection.UpdateMatchup(m);
