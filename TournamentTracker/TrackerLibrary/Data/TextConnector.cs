@@ -10,9 +10,19 @@ namespace TrackerLibrary
     /// </summary>
     public class TextConnector : IDataConnection
     {
+        /// <summary>
+        /// Tournament to complete.
+        /// </summary>
+        /// <param name="model">Tournament to complete.</param>
         public void CompleteTournament(TournamentModel model)
         {
-            throw new NotImplementedException();
+            List<TournamentModel> tournament = GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModel();
+
+            tournament.Remove(model);
+
+            tournament.SaveToTournamentFile();
+
+            TournamentLogic.UpdateTournamentResults(model);
         }
 
         /// <summary>

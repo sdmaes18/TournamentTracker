@@ -387,9 +387,21 @@ namespace TrackerLibrary
             }
         }
 
+        /// <summary>
+        /// Tournament to complete.
+        /// </summary>
+        /// <param name="model">Tournament to complete.</param>
         public void CompleteTournament(TournamentModel model)
         {
-            throw new System.NotImplementedException();
-        }
+            // dbo.spTournaments_Complete
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@id", model.Id);
+              
+
+                connection.Execute("dbo.spTournaments_Complete", p, commandType: CommandType.StoredProcedure);
+            }
     }
 }
