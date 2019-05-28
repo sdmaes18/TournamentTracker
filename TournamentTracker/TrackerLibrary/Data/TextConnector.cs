@@ -10,6 +10,10 @@ namespace TrackerLibrary
     /// </summary>
     public class TextConnector : IDataConnection
     {
+        public void CompleteTournament(TournamentModel model)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Creates a person.

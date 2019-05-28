@@ -386,5 +386,10 @@ namespace TrackerLibrary
                 }
             }
         }
+
+        public void CompleteTournament(TournamentModel model)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -143,9 +143,23 @@ namespace TrackerLibrary
                 {
                     output += 1;
                 }
+                else
+                {
+                    return output;
+                }
             }
 
-            return output;
+            // If else condition in not hit, the tournament is complete
+            TournamentLogic.CompleteTournament(model);
+        }
+
+        /// <summary>
+        /// Completes the tournament.
+        /// </summary>
+        /// <param name="model">Tournament to complete.</param>
+        private static void CompleteTournament(TournamentModel model)
+        {
+            
         }
 
         /// <summary>

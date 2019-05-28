@@ -61,5 +61,11 @@ namespace TrackerLibrary
         /// </summary>
         /// <param name="model">Matchup to update.</param>
         void UpdateMatchup(MatchupModel model);
+
+        /// <summary>
+        /// Used to complete a given tournament.
+        /// </summary>
+        /// <param name="model">The tournament to complete.</param>
+        void CompleteTournament(TournamentModel model);
     }
 }
