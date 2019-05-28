@@ -37,6 +37,8 @@ namespace TrackerLibrary
         /// <param name="model">Tournament to update.</param>
         public static void UpdateTournamentResults(TournamentModel model)
         {
+            int currentTournamentRound = model.CheckCurrentRound();
+
             List<MatchupModel> toScore = new List<MatchupModel>();
 
             foreach (List<MatchupModel> round in model.Rounds)
@@ -54,23 +56,14 @@ namespace TrackerLibrary
 
             TournamentLogic.AdvanceWinners(toScore, model);
 
-
-
-
-
-
-            //int tournamentRound = model.CheckCurrentRound();
-                       
-            //TournamentLogic.AdvanceWinners(toScore, model);
-
             toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
 
-            //int endingRound = model.CheckCurrentRound();
+            int endingRound = model.CheckCurrentRound();
 
-            //if (endingRound > tournamentRound)
-            //{
-            //    TournamentLogic.AlertUsersInNewRounds(model);
-            //}
+            if (endingRound > currentTournamentRound)
+            {
+                TournamentLogic.AlertUsersInNewRounds(model);
+            }
         }
 
         /// <summary>
