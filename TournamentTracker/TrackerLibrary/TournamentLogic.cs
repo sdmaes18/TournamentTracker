@@ -111,9 +111,9 @@ namespace TrackerLibrary
                 sb.AppendLine("<h1>You have a new matchup!</h1>");
                 sb.Append("<strong>Competitor: </strong>");
                 sb.Append(matchupEntryModel.TeamCompeting.TeamName);
-                sb.AppendLine();
-                sb.AppendLine();
-                sb.AppendLine("May the best team win!");
+                sb.Append("");
+                sb.Append("");
+                sb.AppendLine(", May the best team win!");
                 sb.AppendLine("~ Tournament Tracker / SM");
             }
             else
