@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TrackerLibrary
 {
@@ -33,6 +29,12 @@ namespace TrackerLibrary
         void CreateTeam(TeamModel model);
 
         /// <summary>
+        /// Creates a tournament.
+        /// </summary>
+        /// <param name="model">Model for the tournament.</param>
+        void CreateTournament(TournamentModel model);
+
+        /// <summary>
         /// Get a list of all persons.
         /// </summary>
         /// <returns>A list of people.</returns>
@@ -43,12 +45,6 @@ namespace TrackerLibrary
         /// </summary>
         /// <returns>A list of all the teams.</returns>
         List<TeamModel> GetTeam_All();
-
-        /// <summary>
-        /// Creates a tournament.
-        /// </summary>
-        /// <param name="model">Model for the tournament.</param>
-        void CreateTournament(TournamentModel model);
 
         /// <summary>
         /// Gets all the tournaments in database.

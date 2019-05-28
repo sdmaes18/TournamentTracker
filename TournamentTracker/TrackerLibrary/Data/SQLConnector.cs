@@ -19,7 +19,6 @@ namespace TrackerLibrary
         /// Creates a person and records that data in the database.
         /// </summary>
         /// <param name="model">Person to create.</param>
-        /// <returns>A model of the new person.</returns>
         public void CreatePerson(PersonModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
@@ -37,12 +36,10 @@ namespace TrackerLibrary
             }
         }
 
-        /// TODO - make the CreatePrize method save to the database.
         /// <summary>
         /// Creates a prize model.
         /// </summary>
         /// <param name="model">The model to create.</param>
-        /// <returns>The created model.</returns>
         public void CreatePrize(PrizeModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
@@ -64,7 +61,6 @@ namespace TrackerLibrary
         /// Creates a new team.
         /// </summary>
         /// <param name="model">Model of the new team.</param>
-        /// <returns>A new team model.</returns>
         public void CreateTeam(TeamModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
@@ -107,26 +103,20 @@ namespace TrackerLibrary
                 TournamentLogic.UpdateTournamentResults(model);
             }
         }
-
-
-
+        
         /// <summary>
         /// Gets a list of all the people from the database.
         /// </summary>
         /// <returns>A list of people.</returns>
         public List<PersonModel> GetPerson_All()
         {
-            // A list to hold all the people.
             List<PersonModel> output = null;
 
-            // Connect to the tournament database.
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
             {
-                // Call stored procedure and get all the people in database and turn into a list.
                 output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
             }
 
-            // Return the list of people.
             return output;
         }
 
@@ -136,13 +126,10 @@ namespace TrackerLibrary
         /// <returns>A list of all the teams.</returns>
         public List<TeamModel> GetTeam_All()
         {
-            // A list to hold all the people.
             List<TeamModel> output = null;
 
-            // Connect to the tournament database.
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
             {
-                // Call stored procedure and get all the people in database and turn into a list.
                 output = connection.Query<TeamModel>("dbo.spTeam_GetAll").ToList();
 
                 foreach (TeamModel team in output)
@@ -154,7 +141,6 @@ namespace TrackerLibrary
                 }
             }
 
-            // Return the list of people.
             return output;
         }
 
@@ -268,13 +254,10 @@ namespace TrackerLibrary
         /// <returns>A list of tournaments.</returns>
         public List<TournamentModel> GetTournament_All()
         {
-            // A list to hold all the people.
             List<TournamentModel> output = null;
 
-            // Connect to the tournament database.
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
             {
-                // Call stored procedure and get all the people in database and turn into a list.
                 output = connection.Query<TournamentModel>("dbo.spTournaments_GetAll").ToList();
                 var p = new DynamicParameters();
 
@@ -393,13 +376,10 @@ namespace TrackerLibrary
         /// <param name="model">Tournament to complete.</param>
         public void CompleteTournament(TournamentModel model)
         {
-            // dbo.spTournaments_Complete
-
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
             {
                 var p = new DynamicParameters();
                 p.Add("@id", model.Id);
-
 
                 connection.Execute("dbo.spTournaments_Complete", p, commandType: CommandType.StoredProcedure);
             }
