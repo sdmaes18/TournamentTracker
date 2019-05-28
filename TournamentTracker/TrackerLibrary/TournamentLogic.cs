@@ -225,6 +225,9 @@ namespace TrackerLibrary
             }
 
             Email.SendEmail(new List<string>(), bcc, subject, sb.ToString());
+
+            // Complete tournament.
+            model.CompleteTournament();
         }
 
 

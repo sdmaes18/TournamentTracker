@@ -40,5 +40,15 @@ namespace TrackerLibrary
         /// Gets or sets a list of rounds in the tournament.
         /// </summary>
         public List<List<MatchupModel>> Rounds { get; set; } = new List<List<MatchupModel>>();
+
+        /// <summary>
+        /// Fires when a tournament is complete.
+        /// </summary>
+        public event EventHandler<DateTime> OnTournamentComplete;  
+
+        public void CompleteTournament()
+        {
+            this.OnTournamentComplete?.Invoke(this, DateTime.Now);
+        }
     }
 }

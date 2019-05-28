@@ -34,12 +34,25 @@ namespace TrackerUI
         public TournamentViewForm(TournamentModel model)
         {
             this.InitializeComponent();
+            
             this.tournament = model;
+
+            this.tournament.OnTournamentComplete += Tournament_Complete;
 
             this.WireUpLists();
 
             this.LoadFormData();
             this.LoadRounds();
+        }
+
+        /// <summary>
+        /// Subscribed to completing the tournament.
+        /// </summary>
+        /// <param name="sender">The object that initiated the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void Tournament_Complete(object sender, DateTime e)
+        {
+            this.Close();
         }
 
         /// <summary>
