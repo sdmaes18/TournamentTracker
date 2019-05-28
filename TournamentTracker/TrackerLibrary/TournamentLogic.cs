@@ -159,7 +159,12 @@ namespace TrackerLibrary
         /// <param name="model">Tournament to complete.</param>
         private static void CompleteTournament(TournamentModel model)
         {
-            
+            GlobalConfig.Connection.CompleteTournament(model);
+             
+            if (model.Prizes.Count > 0)
+            {
+                decimal totalPrizeAmount = model.EnteredTeams.Count * model.EntryFee;
+            }
         }
 
         /// <summary>
