@@ -33,7 +33,6 @@
             this.LoadExistingTournamentlbl = new System.Windows.Forms.Label();
             this.LoadTournamentButton = new System.Windows.Forms.Button();
             this.CreateTournamentButton = new System.Windows.Forms.Button();
-            this.DeleteTournamentButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Headerlbl
@@ -71,7 +70,7 @@
             // 
             // LoadTournamentButton
             // 
-            this.LoadTournamentButton.Location = new System.Drawing.Point(194, 205);
+            this.LoadTournamentButton.Location = new System.Drawing.Point(194, 229);
             this.LoadTournamentButton.Name = "LoadTournamentButton";
             this.LoadTournamentButton.Size = new System.Drawing.Size(261, 43);
             this.LoadTournamentButton.TabIndex = 21;
@@ -89,22 +88,12 @@
             this.CreateTournamentButton.UseVisualStyleBackColor = true;
             this.CreateTournamentButton.Click += new System.EventHandler(this.CreateTournamentButton_Click);
             // 
-            // DeleteTournamentButton
-            // 
-            this.DeleteTournamentButton.Location = new System.Drawing.Point(194, 263);
-            this.DeleteTournamentButton.Name = "DeleteTournamentButton";
-            this.DeleteTournamentButton.Size = new System.Drawing.Size(261, 43);
-            this.DeleteTournamentButton.TabIndex = 23;
-            this.DeleteTournamentButton.Text = "Delete Tournament";
-            this.DeleteTournamentButton.UseVisualStyleBackColor = true;
-            // 
             // TournamentDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(667, 405);
-            this.Controls.Add(this.DeleteTournamentButton);
             this.Controls.Add(this.CreateTournamentButton);
             this.Controls.Add(this.LoadTournamentButton);
             this.Controls.Add(this.LoadExisitingTournamentDropDown);
@@ -124,6 +113,5 @@
         private System.Windows.Forms.Label LoadExistingTournamentlbl;
         private System.Windows.Forms.Button LoadTournamentButton;
         private System.Windows.Forms.Button CreateTournamentButton;
-        private System.Windows.Forms.Button DeleteTournamentButton;
     }
 }

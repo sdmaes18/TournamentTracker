@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TournamentTracker;
 using TrackerLib;
 
 namespace TrackerUI
@@ -21,7 +22,8 @@ namespace TrackerUI
             // Initialize the database connections. Have a database (SQL) or a text file like excel.
             TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
 
-            Application.Run(new TournamentDashboardForm());
+            //Application.Run(new TournamentDashboardForm());
+            Application.Run(new LoginTournamentForm());
         }
     }
 }
