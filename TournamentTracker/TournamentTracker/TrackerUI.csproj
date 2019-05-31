@@ -86,11 +86,20 @@
     <Compile Include="Forms\TournamentViewForm.Designer.cs">
       <DependentUpon>TournamentViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RegisterTournamentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterTournamentForm.Designer.cs">
+      <DependentUpon>RegisterTournamentForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\CreateTournamentForm.resx">
       <DependentUpon>CreateTournamentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginTournamentForm.resx">
       <DependentUpon>LoginTournamentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegisterTournamentForm.resx">
+      <DependentUpon>RegisterTournamentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TournamentDashboardForm.resx">
       <DependentUpon>TournamentDashboardForm.cs</DependentUpon>

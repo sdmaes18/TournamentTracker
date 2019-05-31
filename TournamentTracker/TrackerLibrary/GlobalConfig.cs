@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
+using System.Security.Cryptography;
+using System.Text;
 using TrackerLib;
 
 namespace TrackerLibrary
@@ -83,6 +85,27 @@ namespace TrackerLibrary
         public static string AppKey(string key)
         {
             return ConfigurationManager.AppSettings[key];
+        }
+
+        /// <summary>
+        /// Provides a hash of a given string.
+        /// </summary>
+        /// <param name="text">Text to hash.</param>
+        /// <returns>Returns the hash of the given text.</returns>
+        public static string Sha1Hash(string text)
+        {
+            SHA1CryptoServiceProvider sh = new SHA1CryptoServiceProvider();
+            sh.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+            byte[] re = sh.Hash;
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (byte b in re)
+            {
+                sb.Append(b.ToString("x2"));
+            }
+
+            return sb.ToString();
         }
     }
 }

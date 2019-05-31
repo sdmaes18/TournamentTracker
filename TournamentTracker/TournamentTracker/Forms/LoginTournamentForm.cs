@@ -24,7 +24,7 @@ namespace TournamentTracker
         private void LoginButton_Click(object sender, EventArgs e)
         {
             // Hash Value of entered password
-            string hashValue = this.Sha1Hash(this.PasswordLbl.Text);
+            string hashValue = GlobalConfig.Sha1Hash(this.PasswordLbl.Text);
 
             // Provided email from user.
             string email = this.EmailTextBox.Text;
@@ -55,27 +55,6 @@ namespace TournamentTracker
             {
                 MessageBox.Show("Login error: Password was not correct, please try again.");
             }
-        }
-
-        /// <summary>
-        /// Provides a hash of a given string.
-        /// </summary>
-        /// <param name="text">Text to hash.</param>
-        /// <returns>Returns the hash of the given text.</returns>
-        private string Sha1Hash(string text)
-        {
-            SHA1CryptoServiceProvider sh = new SHA1CryptoServiceProvider();
-            sh.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
-            byte[] re = sh.Hash;
-
-            StringBuilder sb = new StringBuilder();
-
-            foreach (byte b in re)
-            {
-                sb.Append(b.ToString("x2"));
-            }
-
-            return sb.ToString();
         }
     }
 }
