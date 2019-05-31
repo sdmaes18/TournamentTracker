@@ -141,6 +141,7 @@ namespace TrackerLibrary
             return GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
         }
 
+
         /// <summary>
         /// Gets all teams from the text file.
         /// </summary>
@@ -166,6 +167,16 @@ namespace TrackerLibrary
         public void UpdateMatchup(MatchupModel model)
         {
             model.UpdateMatchupToFile();
+        }
+
+        /// <summary>
+        /// Used to find a user in the database.
+        /// </summary>
+        /// <param name="email">Email to use to look up person.</param>
+        /// <returns>A single user.</returns>
+        public PersonModel GetSinglePerson(string email)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

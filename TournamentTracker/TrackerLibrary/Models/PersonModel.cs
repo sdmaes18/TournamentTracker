@@ -40,5 +40,10 @@
         /// Gets or sets the cell phone number of the person.
         /// </summary>
         public string CellphoneNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the users password.
+        /// </summary>
+        public string Password { get; set; }
     }
 }

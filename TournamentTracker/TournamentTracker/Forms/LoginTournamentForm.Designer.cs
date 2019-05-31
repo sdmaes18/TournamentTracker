@@ -30,8 +30,8 @@
         {
             this.LoginButton = new System.Windows.Forms.Button();
             this.RegisterButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.EmailLbl = new System.Windows.Forms.Label();
             this.PasswordLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -55,19 +55,19 @@
             this.RegisterButton.Text = "Register";
             this.RegisterButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // EmailTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(222, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(184, 26);
-            this.textBox1.TabIndex = 2;
+            this.EmailTextBox.Location = new System.Drawing.Point(222, 40);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(184, 26);
+            this.EmailTextBox.TabIndex = 2;
             // 
-            // textBox2
+            // PasswordTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(222, 87);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(184, 26);
-            this.textBox2.TabIndex = 3;
+            this.PasswordTextBox.Location = new System.Drawing.Point(222, 87);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.Size = new System.Drawing.Size(184, 26);
+            this.PasswordTextBox.TabIndex = 3;
             // 
             // EmailLbl
             // 
@@ -94,8 +94,8 @@
             this.ClientSize = new System.Drawing.Size(525, 279);
             this.Controls.Add(this.PasswordLbl);
             this.Controls.Add(this.EmailLbl);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PasswordTextBox);
+            this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.RegisterButton);
             this.Controls.Add(this.LoginButton);
             this.Name = "LoginTournamentForm";
@@ -109,8 +109,8 @@
 
         private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.Button RegisterButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox EmailTextBox;
+        private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Label EmailLbl;
         private System.Windows.Forms.Label PasswordLbl;
     }

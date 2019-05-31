@@ -384,5 +384,33 @@ namespace TrackerLibrary
                 connection.Execute("dbo.spTournaments_Complete", p, commandType: CommandType.StoredProcedure);
             }
         }
+
+        /// <summary>
+        /// Used to get people from the database.
+        /// </summary>
+        /// <param name="email">Email to look up user.</param>
+        /// <returns>A single person.</returns>
+        public PersonModel GetSinglePerson(string email)
+        {
+            List<PersonModel> output = null;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(Db)))
+            {
+                output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+            }
+
+            PersonModel person = new PersonModel();
+
+            foreach (PersonModel p in output)
+            {
+                if (p.EmailAddress.Equals(email))
+                {
+                    person = p;
+                    return person;
+                }
+            }
+
+            return null;
+        }
     }
 }

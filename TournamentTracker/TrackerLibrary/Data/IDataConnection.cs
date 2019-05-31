@@ -63,5 +63,12 @@ namespace TrackerLibrary
         /// </summary>
         /// <param name="model">The tournament to complete.</param>
         void CompleteTournament(TournamentModel model);
+
+        /// <summary>
+        /// Gets a single person based on their email.
+        /// </summary>
+        /// <param name="email">Email to use to look up user.</param>
+        /// <returns>A single user.</returns>
+        PersonModel GetSinglePerson(string email);
     }
 }
